@@ -2,19 +2,29 @@
 
 <div class="containment">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>
                 Test 1
             </h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>
                 Test 2
             </h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-2">
             <h4>
                 Test 3
+            </h4>
+        </div>
+        <div class="col-md-2">
+            <h4>
+                Test 4
+            </h4>
+        </div>
+        <div class="col-md-2">
+            <h4>
+                Test 4
             </h4>
         </div>
     </div>
