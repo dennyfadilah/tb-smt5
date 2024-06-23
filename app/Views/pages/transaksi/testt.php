@@ -2,5 +2,6 @@
 
 <?= $this->section('content') ?>
 
-<h1>hello</h1>
+<h1>hai</h1>
+
 <?= $this->endSection() ?>
