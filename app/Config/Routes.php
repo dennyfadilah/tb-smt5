@@ -5,13 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'HomeController::index');
+$routes->get('/', 'HomeController::index', ['filter' => 'auth']);
 
-$routes->group('transaksi', function ($routes) {
+$routes->group('transaksi', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'TransaksiController::index');
 });
 
-$routes->group('data-master', function ($routes) {
+$routes->group('data-master', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'DataMasterController::index');
 });
 
@@ -19,5 +19,5 @@ $routes->group('auth', function ($routes) {
     $routes->get('/', 'AuthController::index');
     $routes->get('login', 'AuthController::login');
     $routes->get('register', 'AuthController::register');
-    $routes->get('logout', 'AuthController::logout');
+    $routes->get('logout', 'AuthController::logout', ['filter' => 'auth']);
 });
