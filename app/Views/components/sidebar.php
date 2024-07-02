@@ -5,7 +5,7 @@
         <div class="m-header">
             <a href="<?= base_url('/') ?>" class="b-brand text-primary">
                 <!-- ========   Change your logo from here   ============ -->
-                <h2>Content Creator</h2>
+                <h2>Surveyor</h2>
             </a>
         </div>
 

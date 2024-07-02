@@ -30,7 +30,8 @@
     </style>
 </head>
 
-<body>
+<body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr"
+    data-pc-theme="light">
     <!-- Cek Login True -->
     <?php if (!session()->get('isLoggedIn')) : ?>
     <div class="auth-main">
@@ -44,19 +45,21 @@
     <?php else : ?>
 
     <!-- [ Main Content ] start -->
-    <?= $this->include('components/topbar') ?>
     <?= $this->include('components/sidebar') ?>
+    <?= $this->include('components/topbar') ?>
+
 
     <div class="pc-container">
         <div class="pc-content">
             <!-- [ Breadcrumb ] start -->
-            <?= $this->include('components/breadcrumb') ?>
+            <?php if (current_url() !== base_url()) {
+                    echo $this->include('components/breadcrumb');
+                }
+                ?>
             <!-- [ Breadcrumb ] end -->
 
             <!-- [ Content ] start -->
-            <div class="row">
-                <?= $this->renderSection('content') ?>
-            </div>
+            <?= $this->renderSection('content') ?>
             <!-- [ Content ] end -->
         </div>
     </div>
@@ -66,6 +69,7 @@
 
     <?php endif ?>
 
+    <script src="<?= base_url('assets/js/plugins/apexcharts.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/plugins/popper.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/plugins/simplebar.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/plugins/bootstrap.min.js') ?>"></script>
@@ -100,43 +104,57 @@
     preset_change("preset-1");
     </script>
 
+    <!-- Script Collapse Menu sementara [Belum terdeteksi di assets/js/pcoded.js] -->
     <script>
     document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            // Menampilkan toast untuk pesan sukses
-            if (document.getElementById('toastSuccess')) {
-                let toastSuccess = new bootstrap.Toast(document.getElementById('toastSuccess'));
-                toastSuccess.show();
-            }
+        const sidebarToggleBtn = document.getElementById('sidebar-hide');
+        const mobileCollapseBtn = document.getElementById('mobile-collapse');
+        const sidebar = document.querySelector('.pc-sidebar');
 
-            // Menampilkan toast untuk pesan error
-            if (document.getElementById('toastError')) {
-                let toastError = new bootstrap.Toast(document.getElementById('toastError'));
-                toastError.show();
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                sidebar.classList.toggle('pc-sidebar-hide');
+                toggleOverlay(); // Panggil fungsi untuk menampilkan/hide overlay
+            });
+        }
+
+        if (mobileCollapseBtn) {
+            mobileCollapseBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                sidebar.classList.toggle('mob-sidebar-active');
+                toggleOverlay(); // Panggil fungsi untuk menampilkan/hide overlay
+            });
+        }
+
+        // Fungsi untuk menampilkan/hide overlay
+        function toggleOverlay() {
+            const overlay = document.querySelector('.pc-menu-overlay');
+            if (sidebar.classList.contains('pc-sidebar-hide') || !sidebar.classList.contains(
+                    'mob-sidebar-active')) {
+                // Sidebar tidak aktif, sembunyikan overlay
+                if (overlay) {
+                    overlay.remove();
+                }
+            } else {
+                // Sidebar aktif, tampilkan overlay
+                if (!overlay) {
+                    sidebar.insertAdjacentHTML(
+                        "beforeend",
+                        '<div class="pc-menu-overlay"></div>'
+                    );
+
+                    // Tambah event listener untuk overlay
+                    const menuOverlay = document.querySelector('.pc-menu-overlay');
+                    menuOverlay.addEventListener('click', function() {
+                        sidebar.classList.remove('pc-sidebar-hide');
+                        sidebar.classList.remove('mob-sidebar-active');
+                        menuOverlay.remove();
+                    });
+                }
             }
-        }, 100);
+        }
     });
-    </script>
-
-    <script>
-    let successAlert = document.getElementById('success-alert');
-    let dangerAlert = document.getElementById('danger-alert');
-
-    function hideAlert(alert) {
-        alert.style.display = 'none';
-    }
-
-    if (successAlert) {
-        setTimeout(function() {
-            hideAlert(successAlert);
-        }, 3000);
-    }
-
-    if (dangerAlert) {
-        setTimeout(function() {
-            hideAlert(dangerAlert);
-        }, 3000);
-    }
     </script>
 
     <!-- [Page Specific JS] start -->

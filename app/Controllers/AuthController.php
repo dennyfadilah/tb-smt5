@@ -12,6 +12,8 @@ class AuthController extends BaseController
         $data = [
             'title' => 'Login'
         ];
+
+        session()->set('isLoggedIn', true);
         return view('pages/auth/login', $data);
     }
 
