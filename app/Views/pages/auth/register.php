@@ -16,11 +16,17 @@
         </div>
         <h5 class="my-3 d-flex justify-content-center">Register with Email address</h5>
 
-        <form action="" method="post" id="registerForm" novalidate>
+        <form action="<?= base_url('auth/proses-register') ?>" method="post" id="registerForm" novalidate>
+            <?= csrf_field() ?>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" placeholder="Fullname" required>
-                <label for="name">Fullname</label>
+                <input type="text" class="form-control" id="nama" name="nama" placeholder="Fullname" required>
+                <label for="nama">Fullname</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="no_telp" name="no_telp" placeholder="No. Telp" required>
+                <label for="no_telp">No. Telp</label>
             </div>
 
             <div class="form-floating mb-3">
@@ -28,10 +34,13 @@
                 <label for="email">Email Address</label>
             </div>
 
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password"
-                    required>
-                <label for="password">Password</label>
+            <div class="input-group mb-3">
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        required>
+                    <label for="password">Password</label>
+                </div>
+                <span class="input-group-text" id="toggleBtn"><i class="ti ti-eye-off" id="iconToggle"></i></span>
             </div>
 
             <div class="d-grid mt-4">
@@ -52,14 +61,9 @@
 <?= $this->section('script') ?>
 <script>
 jQuery(function($) {
-    function validEmail(email) {
-        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return pattern.test(email);
-    }
-
-    $('#name').change(function() {
-        const name = $(this).val();
-        if (name.length == 0) {
+    $('#nama').change(function() {
+        const nama = $(this).val();
+        if (nama.length == 0) {
             $(this).addClass('is-invalid');
             Swal.fire({
                 icon: "error",
@@ -70,6 +74,25 @@ jQuery(function($) {
             $(this).removeClass('is-invalid');
         }
     });
+
+    $('#no_telp').change(function() {
+        const no_telp = $(this).val();
+        if (no_telp.length == 0) {
+            $(this).addClass('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Masukan no. telp.",
+            })
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    })
+
+    function validEmail(email) {
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+    }
 
     $('#email').change(function() {
         const email = $(this).val();
@@ -108,29 +131,57 @@ jQuery(function($) {
         }
     });
 
-    $('#btnRegister').click(function() {
-        const name = $('#name').val();
-        const email = $('#email').val();
-        const password = $('#password').val();
-
-
-        if (name == '' || email == '' || password == '') {
-            if (name == '') {
-                $('#name').addClass('is-invalid');
-
-            } else if (email == '') {
-                $('#email').addClass('is-invalid');
-
-            } else if (password == '') {
-                $('#password').addClass('is-invalid');
-            }
-
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Data tidak boleh kosong.",
-            });
+    $('#toggleBtn').click(function() {
+        const password = $('#password');
+        const icon = $('#iconToggle');
+        if (password.attr('type') == 'password') {
+            password.attr('type', 'text');
+            icon.removeClass('ti-eye-off');
+            icon.addClass('ti-eye');
+        } else {
+            password.attr('type', 'password');
+            icon.removeClass('ti-eye');
+            icon.addClass('ti-eye-off');
         }
+    });
+
+    function togglePassword() {
+        const password = $('#password');
+        const icon = $('.ti-eye-off');
+        if (password.attr('type') == 'password') {
+            password.attr('type', 'text');
+            icon.removeClass('ti-eye-off');
+            icon.addClass('ti-eye');
+        } else {
+            password.attr('type', 'password');
+            icon.removeClass('ti-eye');
+            icon.addClass('ti-eye-off');
+        }
+    }
+
+    function validateField(selector, value) {
+        if (value === '') {
+            selector.addClass('is-invalid');
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Data tidak boleh kosong',
+            });
+        } else {
+            selector.removeClass('is-invalid');
+        }
+    }
+
+    $('#btnRegister').click(function() {
+        const nama = $('#nama');
+        const noTelp = $('#no_telp');
+        const email = $('#email');
+        const password = $('#password');
+
+        validateField(nama, nama.val());
+        validateField(noTelp, noTelp.val());
+        validateField(email, email.val());
+        validateField(password, password.val());
     });
 
     $('#registerForm').submit(function(e) {
@@ -145,26 +196,32 @@ jQuery(function($) {
         $.ajax({
             method: 'POST',
             url: $(this).attr('action'),
-            type: 'POST',
             data: formData,
             cache: false,
             contentType: false,
             processData: false,
             dataType: 'json',
             success: function(response) {
-                if (response.error) {
-                    $btnRegister.text('Login');
-                    $btnRegister.prop('disabled', false);
+                $btnRegister.text('Register');
+                $btnRegister.prop('disabled', false);
 
+                if (response.error) {
+                    console.log("response.message");
                     Swal.fire({
                         icon: "error",
                         title: "Oops...",
                         text: response.message,
-                    })
+                    });
                 } else {
-                    $btnRegister.text('Login');
-                    $btnRegister.prop('disabled', false);
-                    window.location.href = response.redirect;
+                    Swal.fire({
+                        icon: "success",
+                        title: "Berhasil!",
+                        text: response.message,
+                    }).then((result) => {
+                        if (result.isConfirmed || result.dismiss) {
+                            window.location.href = response.redirect;
+                        }
+                    });
                 }
             }
         });

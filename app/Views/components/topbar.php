@@ -15,16 +15,14 @@
                     </a>
                 </li>
                 <li class="dropdown pc-h-item d-inline-flex d-md-none">
-                    <a class="pc-head-link head-link-secondary dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown"
-                        href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <a class="pc-head-link head-link-secondary dropdown-toggle arrow-none m-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <i class="ti ti-search"></i>
                     </a>
                     <div class="dropdown-menu pc-h-dropdown drp-search">
                         <form class="px-3">
                             <div class="form-group mb-0 d-flex align-items-center">
                                 <i data-feather="search"></i>
-                                <input type="search" class="form-control border-0 shadow-none"
-                                    placeholder="Search here. . .">
+                                <input type="search" class="form-control border-0 shadow-none" placeholder="Search here. . .">
                             </div>
                         </form>
                     </div>
@@ -38,8 +36,7 @@
             <ul class="list-unstyled">
 
                 <li class="dropdown pc-h-item header-user-profile">
-                    <a class="pc-head-link head-link-primary dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown"
-                        href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                    <a class="pc-head-link head-link-primary dropdown-toggle arrow-none me-0" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                         <img src="../assets/images/user/avatar-5.jpg" alt="user-image" class="user-avtar">
                         <span>
                             <i class="ti ti-settings"></i>
@@ -48,8 +45,7 @@
                     <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown">
                         <div class="dropdown-header">
 
-                            <div class="profile-notification-scroll position-relative"
-                                style="max-height: calc(100vh - 280px)">
+                            <div class="profile-notification-scroll position-relative" style="max-height: calc(100vh - 280px)">
 
                                 <div class="upgradeplan-block bg-light-warning rounded">
                                     <h4>Good Morning, <span class="small text-muted">
@@ -59,17 +55,15 @@
 
                                 <hr>
 
-                                <a href="<?= base_url('profile') ?>"
-                                    class="dropdown-item <?= base_url('profile') === current_url() ? 'active' : '' ?>">
+                                <a href="<?= base_url('profile') ?>" class="dropdown-item <?= base_url('profile') === current_url() ? 'active' : '' ?>">
                                     <i class="ti ti-user"></i>
                                     <span>Profile</span>
                                 </a>
 
-                                <a href="<?= base_url('logout') ?>" class="dropdown-item"
-                                    onclick="return confirm('Yakin logout?')">
+                                <button type="button" class="dropdown-item" id="btnLogout">
                                     <i class="ti ti-logout"></i>
                                     <span>Logout</span>
-                                </a>
+                                </button>
 
                             </div>
                         </div>
@@ -80,3 +74,25 @@
     </div>
 </header>
 <!-- [ Header ] end -->
+
+<?= $this->section('script') ?>
+<script>
+    $("#btnLogout").click(function(e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            reverseButtons: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Logout!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?= base_url('auth/logout') ?>";
+            }
+        });
+    });
+</script>
+<?= $this->endSection() ?>
