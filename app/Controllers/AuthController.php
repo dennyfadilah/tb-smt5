@@ -59,12 +59,8 @@ class AuthController extends BaseController
                 if ($user) {
                     if (password_verify($password, $user['password'])) {
                         session()->set('isLoggedIn', true);
-                        session()->set('user', $user);
+                        session()->set('nama', $user['nama']);
                         return $this->response->setJSON([
-                            // 'data' => [
-                            //     'email' => $user['email'],
-                            //     'password' => $password
-                            // ],
                             'redirect' => base_url('/')
                         ]);
                     } else {
@@ -178,5 +174,99 @@ class AuthController extends BaseController
     {
         session()->destroy();
         return redirect()->to('auth/login');
+    }
+
+    public function forgotPassword()
+    {
+        return view('pages/auth/forgot-password', ['title' => 'Forgot Password']);
+    }
+
+    public function enterCode()
+    {
+        $data = [
+            'title' => 'Enter Code',
+            'email' => session()->get('email')
+        ];
+
+        return view('pages/auth/enter-code', $data);
+    }
+
+    public function verifyCode()
+    {
+        if ($this->request->getMethod() == 'POST') {
+            $code = $this->request->getVar('code');
+
+            if ($code == session()->get('code')) {
+                return $this->response->setJSON([
+                    'error' => false,
+                    'redirect' => base_url('auth/reset-password')
+                ]);
+            } else {
+                return $this->response->setJSON([
+                    'error' => true,
+                    'message' => 'The code entered is invalid.'
+                ]);
+            }
+        }
+    }
+
+    public function resetPassword()
+    {
+        return view('pages/auth/enter-password', ['title' => 'Reset Password']);
+    }
+
+    public function confirmPassword()
+    {
+        if ($this->request->getMethod() == 'POST') {
+            $rules = [
+                'password' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Password harus diisi'
+                    ]
+                ], 'confirmPassword' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Konfirmasi Password harus diisi'
+                    ]
+                ]
+            ];
+
+            if ($this->validate($rules)) {
+                $password = $this->request->getVar('password');
+                $confirmPassword = $this->request->getVar('confirmPassword');
+
+                if ($confirmPassword == $password) {
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT); // Hash password
+
+                    $user = $this->userModel->where('email', session()->get('email'))->first();
+
+                    if ($this->userModel->update($user['id'], ['password' => $hashedPassword])) {
+                        return $this->response->setJSON([
+                            'error' => false,
+                            'message' => 'Reset password success',
+                            'redirect' => base_url('auth/login')
+                        ]);
+                    } else {
+                        return $this->response->setJSON([
+                            'error' => true,
+                            'message' => 'Reset password failed'
+                        ]);
+                    }
+                } else {
+                    return $this->response->setJSON([
+                        'error' => true,
+                        'field' => true,
+                        'message' => 'The password entered does not match.'
+
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON([
+                    'error' => true,
+                    'message' => $this->validator->getErrors()
+                ]);
+            }
+        }
     }
 }

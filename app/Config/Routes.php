@@ -6,6 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
+$routes->post('send-verification-code', 'VerificationController::sendVerificationCode');
 
 
 $routes->get('/', 'HomeController::index', ['filter' => 'auth']);
@@ -25,4 +26,10 @@ $routes->group('auth', function ($routes) {
     $routes->get('register', 'AuthController::register');
     $routes->post('proses-register', 'AuthController::registerCheck');
     $routes->get('logout', 'AuthController::logout', ['filter' => 'auth']);
+    $routes->get('forgot-password', 'AuthController::forgotPassword');
+    $routes->post('send-code', 'VerificationController::sendVerificationCode');
+    $routes->get('enter-code', 'AuthController::enterCode');
+    $routes->post('verify-code', 'AuthController::verifyCode');
+    $routes->get('reset-password', 'AuthController::resetPassword');
+    $routes->post('confirm-password', 'AuthController::confirmPassword');
 });

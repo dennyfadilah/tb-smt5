@@ -241,13 +241,6 @@
     </div>
     <!-- [ sample-page ] end -->
 
-    <!-- <form action="<?= base_url('kirim-kode') ?>" method="post">
-        <label for="phone_number">Phone Number:</label>
-        <input type="text" id="phone_number" name="phone_number" required>
-        <button type="submit">Send Verification Code</button>
-    </form> -->
-
-
 </div>
 
 <?= $this->endSection() ?>

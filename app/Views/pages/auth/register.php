@@ -52,7 +52,7 @@
 
         <h5 class="d-flex gap-1 justify-content-center">
             Already have an account?
-            <a href="<?= site_url('auth/login') ?>">Login</a>
+            <a href="<?= site_url('auth/login') ?>" class="text-secondary">Login</a>
         </h5>
     </div>
 </div>
