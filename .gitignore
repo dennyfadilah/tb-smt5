@@ -2,6 +2,9 @@
 # Operating Specific Junk Files
 #-------------------------
 
+# Brevo
+config/Brevo.php
+
 # OS X
 .DS_Store
 .AppleDouble
@@ -44,6 +47,7 @@ $RECYCLE.BIN/
 .env
 .vagrant
 Vagrantfile
+
 
 #-------------------------
 # Temporary Files
