@@ -29,7 +29,27 @@ class VerificationController extends BaseController
         $user = $this->userModel->where('email', $email)->first();
 
         if ($user) {
-            if ($this->sendCode($email)) {
+            // Kirim kode verifikasi
+
+            // Generate kode verifikasi
+            $verificationCode = rand(100000, 999999);
+
+            // Simpan kode verifikasi ke database atau session untuk validasi
+            session()->set('code', $verificationCode);
+            session()->set('email', $email);
+
+            // Buat instance BrevoLibrary
+            $brevo = new BrevoLibrary();
+
+            // Pesan yang akan dikirim
+            $subject = 'Kode Verifikasi Anda';
+            $content = "<p>Kode verifikasi Anda adalah: <strong>$verificationCode</strong></p>";
+
+            // Kirim email
+            $send = $brevo->sendVerificationEmail($email, $subject, $content);
+
+            // $send = $this->sendCode($email);
+            if ($send) {
                 return $this->response->setJSON([
                     'error' => false,
                     'message' => 'Kode verifikasi telah dikirim.',
@@ -60,6 +80,7 @@ class VerificationController extends BaseController
         $content = "<p>Kode verifikasi Anda adalah: <strong>$verificationCode</strong></p>";
 
         // Kirim email
-        return $brevo->sendVerificationEmail($email, $subject, $content);
+        $result = $brevo->sendVerificationEmail($email, $subject, $content);
+        return $result;
     }
 }
