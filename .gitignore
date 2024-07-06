@@ -4,6 +4,7 @@
 
 # Brevo
 app/Config/Brevo.php
+Config/Brevo.php
 
 # OS X
 .DS_Store
