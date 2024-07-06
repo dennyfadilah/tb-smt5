@@ -1,0 +1,41 @@
+CRITICAL - 2024-07-01 10:04:00 --> ErrorException: Undefined variable $route
+[Method: CLI, Route: make:controller/AuthController]
+in APPPATH\Config\Routes.php on line 18.
+ 1 APPPATH\Config\Routes.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php', 18)
+ 2 SYSTEMPATH\Router\RouteCollection.php(340): require('C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 5 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 6 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-07-01 10:04:15 --> ErrorException: Undefined variable $route
+[Method: CLI, Route: serve]
+in APPPATH\Config\Routes.php on line 18.
+ 1 APPPATH\Config\Routes.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php', 18)
+ 2 SYSTEMPATH\Router\RouteCollection.php(340): require('C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 5 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 6 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-07-01 10:05:15 --> ErrorException: Undefined variable $route
+[Method: CLI, Route: make:controller/AuthController]
+in APPPATH\Config\Routes.php on line 18.
+ 1 APPPATH\Config\Routes.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $route', 'C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php', 18)
+ 2 SYSTEMPATH\Router\RouteCollection.php(340): require('C:\\xampp\\htdocs\\tb-smt5\\app\\Config\\Routes.php')
+ 3 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 4 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 5 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 6 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-07-01 10:28:26 --> ParseError: syntax error, unexpected token "!", expecting identifier or variable or "{" or "$"
+[Method: GET, Route: auth/login]
+in APPPATH\Views\layouts\main.php on line 34.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\View\View.php(250): CodeIgniter\View\View->render('layouts/main', [], true)
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('pages/auth/login', [], true)
+ 4 APPPATH\Controllers\AuthController.php(15): view('pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->login()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
