@@ -2,9 +2,6 @@
 # Operating Specific Junk Files
 #-------------------------
 
-# Brevo
-config/Brevo.php
-
 # OS X
 .DS_Store
 .AppleDouble
