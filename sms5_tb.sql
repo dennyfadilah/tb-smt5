@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2024 at 01:45 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 07 Jul 2024 pada 07.00
+-- Versi server: 10.4.32-MariaDB
+-- Versi PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `komoditas`
+-- Struktur dari tabel `komoditas`
 --
 
 CREATE TABLE `komoditas` (
@@ -36,7 +36,7 @@ CREATE TABLE `komoditas` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lokasi`
+-- Struktur dari tabel `lokasi`
 --
 
 CREATE TABLE `lokasi` (
@@ -48,7 +48,7 @@ CREATE TABLE `lokasi` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `surveyor`
+-- Struktur dari tabel `surveyor`
 --
 
 CREATE TABLE `surveyor` (
@@ -64,7 +64,7 @@ CREATE TABLE `surveyor` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -72,64 +72,71 @@ CREATE TABLE `user` (
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `nama` varchar(25) NOT NULL,
-  `no_telp` int(11) DEFAULT NULL
+  `no_telp` varchar(13) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `password`, `nama`, `no_telp`) VALUES
+(5, 'admin1@mail.com', '$2y$10$oseRo959pLsBIqo7kndFwOO9Rc9yvsi9Swdg.AHFIcPiZfjXwHpyq', 'denny', '085155062088');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `komoditas`
+-- Indeks untuk tabel `komoditas`
 --
 ALTER TABLE `komoditas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `lokasi`
+-- Indeks untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `surveyor`
+-- Indeks untuk tabel `surveyor`
 --
 ALTER TABLE `surveyor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `komoditas`
+-- AUTO_INCREMENT untuk tabel `komoditas`
 --
 ALTER TABLE `komoditas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `lokasi`
+-- AUTO_INCREMENT untuk tabel `lokasi`
 --
 ALTER TABLE `lokasi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `surveyor`
+-- AUTO_INCREMENT untuk tabel `surveyor`
 --
 ALTER TABLE `surveyor`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
