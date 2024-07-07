@@ -33,11 +33,10 @@ class AuthController extends BaseController
     {
         if ($this->request->getMethod() == 'POST') {
             $rules = [
-                'email' => [
-                    'rules' => 'required|valid_email',
+                'loginInput' => [
+                    'rules' => 'required',
                     'errors' => [
-                        'required' => 'Email harus diisi',
-                        'valid_email' => 'Email tidak valid'
+                        'required' => 'Masukan email atau no. telp'
                     ]
                 ],
 
@@ -51,10 +50,13 @@ class AuthController extends BaseController
 
             if ($this->validate($rules)) {
 
-                $email = $this->request->getVar('email');
+                $loginInput = $this->request->getVar('loginInput');
                 $password = $this->request->getVar('password');
 
-                $user = $this->userModel->where('email', $email)->first();
+                $user = $this->userModel
+                    ->where('email', $loginInput)
+                    ->orWhere('no_telp', $loginInput)
+                    ->first();
 
                 if ($user) {
                     if (password_verify($password, $user['password'])) {
@@ -66,13 +68,13 @@ class AuthController extends BaseController
                     } else {
                         return $this->response->setJSON([
                             'error' => true,
-                            'message' => 'Password salah'
+                            'message' => 'Informasi yang Anda masukkan tidak sesuai. Silakan coba lagi.'
                         ]);
                     }
                 } else {
                     return $this->response->setJSON([
                         'error' => true,
-                        'message' => 'Email tidak terdaftar'
+                        'message' => 'Informasi yang Anda masukkan tidak sesuai. Silakan coba lagi.'
                     ]);
                 }
             } else {
