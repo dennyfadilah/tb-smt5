@@ -12,7 +12,7 @@ class SurveyorModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["marketing_nama", "komoditas_id", "lokasi_id", "repeat_order", "hasil_survery"];
+    protected $allowedFields    = ["marketing_nama", "komoditas_id", "lokasi_id", "repeat_order", "hasil_survey"];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -48,16 +48,18 @@ class SurveyorModel extends Model
 
     // Niatnya: ubah dari nilai boolean kolom repeat order jadi string "Iya" dan "Tidak"
     // belum di test.
-    function getRepeatOrder($thisID){
+    function getRepeatOrder($thisID)
+    {
         $repeatOrder = $this->where(["id" => $thisID])->findColumn("repeat_order");
-        $repeatOrder = ($repeatOrder)? "Iya": "Tidak";
+        $repeatOrder = ($repeatOrder) ? "Iya" : "Tidak";
         return $repeatOrder;
     }
 
     // Banyak "kunjungan" (Lokasi yang sering di survey)
     // return: lokasi, kunjungan
-    function getLokasiCount($thisMonth = null){
-        if($thisMonth){ // true: SATU BULAN TERAKHIR
+    function getLokasiCount($thisMonth = null)
+    {
+        if ($thisMonth) { // true: SATU BULAN TERAKHIR
             return $this->db->query("SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
             FROM surveyor
             LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
@@ -75,7 +77,8 @@ class SurveyorModel extends Model
 
     //Semua Komoditas yang pernah di Survey
     //Return: nama, jumlah
-    function getKomoditasCount(){        
+    function getKomoditasCount()
+    {
         $query = $this->db->query("SELECT komoditas.nama as komoditas, COUNT(surveyor.komoditas_id) AS jumlah
         FROM surveyor
         LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
@@ -86,7 +89,8 @@ class SurveyorModel extends Model
 
     //Banyak yang di cari (Komoditas yang sering di Survey di setiap lokasi)
     //return: komoditas, lokasi, jumlah
-    function getSpecificCount(){
+    function getSpecificCount()
+    {
         $query = $this->db->query("SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
         FROM surveyor
         LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
@@ -109,9 +113,9 @@ class SurveyorModel extends Model
 
     // test 
     // return: nama
-    function getTestSelect(){
+    function getTestSelect()
+    {
         $query = $this->db->query("SELECT DISTINCT marketing_nama AS nama FROM surveyor")->getResultArray();
         return $query;
     }
-
 }

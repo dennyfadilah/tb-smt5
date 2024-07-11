@@ -1,0 +1,555 @@
+ERROR - 2024-07-11 13:30:10 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:186
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(186): mysqli->real_connect('localhost', '', Object(SensitiveParameterValue), '', 3306, '', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\tb-smt5\app\Controllers\AuthController.php(59): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AuthController->loginCheck()
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:231
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#5 C:\xampp\htdocs\tb-smt5\app\Controllers\AuthController.php(59): CodeIgniter\BaseModel->first()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\AuthController->loginCheck()
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#13 {main}
+CRITICAL - 2024-07-11 13:30:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user ''@'localhost' (using password: NO)
+[Method: POST, Route: auth/proses-login]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1637): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `user`
+WHERE `email` = :email:
+OR `no_telp` = :no_telp:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\AuthController.php(59): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->loginCheck()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+INFO - 2024-07-11 13:31:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:31:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:32:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:32:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:32:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:32:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-11 13:33:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-11 13:34:26 --> mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause' in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT lokasi.n...', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.n...')
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.n...')
+#3 C:\xampp\htdocs\tb-smt5\app\Models\SurveyorModel.php(61): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.n...')
+#4 C:\xampp\htdocs\tb-smt5\app\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-07-11 13:34:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+[Method: GET, Route: donut]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 APPPATH\Models\SurveyorModel.php(61): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 2 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:34:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 3 APPPATH\Models\SurveyorModel.php(61): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 4 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:34:26 --> [Caused by] mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 4 APPPATH\Models\SurveyorModel.php(61): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 5 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+ERROR - 2024-07-11 13:34:52 --> mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause' in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komodita...', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komodita...')
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komodita...')
+#3 C:\xampp\htdocs\tb-smt5\app\Models\SurveyorModel.php(90): CodeIgniter\Database\BaseConnection->query('SELECT komodita...')
+#4 C:\xampp\htdocs\tb-smt5\app\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-07-11 13:34:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+[Method: GET, Route: column]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 APPPATH\Models\SurveyorModel.php(90): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:34:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 APPPATH\Models\SurveyorModel.php(90): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:34:52 --> [Caused by] mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Models\SurveyorModel.php(90): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 5 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+ERROR - 2024-07-11 13:38:33 --> mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause' in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komodita...', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komodita...')
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komodita...')
+#3 C:\xampp\htdocs\tb-smt5\app\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komodita...')
+#4 C:\xampp\htdocs\tb-smt5\app\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-07-11 13:38:33 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+[Method: GET, Route: column]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:33 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:33 --> [Caused by] mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 5 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+ERROR - 2024-07-11 13:38:37 --> mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause' in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komodita...', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komodita...')
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komodita...')
+#3 C:\xampp\htdocs\tb-smt5\app\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komodita...')
+#4 C:\xampp\htdocs\tb-smt5\app\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-07-11 13:38:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+[Method: GET, Route: column]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:37 --> [Caused by] mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 4 APPPATH\Models\SurveyorModel.php(94): CodeIgniter\Database\BaseConnection->query('SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+        FROM surveyor
+        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+        GROUP BY komoditas.nama, lokasi.nama
+        ORDER BY komoditas.nama')
+ 5 APPPATH\Controllers\ChartController.php(30): App\Models\SurveyorModel->getSpecificCount()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->columnChart()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+ERROR - 2024-07-11 13:38:59 --> mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause' in C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:310
+Stack trace:
+#0 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(310): mysqli->query('SELECT lokasi.n...', 0)
+#1 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.n...')
+#2 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.n...')
+#3 C:\xampp\htdocs\tb-smt5\app\Models\SurveyorModel.php(63): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.n...')
+#4 C:\xampp\htdocs\tb-smt5\app\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+#5 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+#6 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+#7 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\tb-smt5\public\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 C:\xampp\htdocs\tb-smt5\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs...')
+#12 {main}
+CRITICAL - 2024-07-11 13:38:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+[Method: GET, Route: donut]
+in SYSTEMPATH\Database\BaseConnection.php on line 686.
+ 1 APPPATH\Models\SurveyorModel.php(63): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 2 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:59 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 315.
+ 1 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 3 APPPATH\Models\SurveyorModel.php(63): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 4 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')
+CRITICAL - 2024-07-11 13:38:59 --> [Caused by] mysqli_sql_exception: Unknown column 'surveyor.waktu' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 310.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(310): mysqli->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(732): CodeIgniter\Database\MySQLi\Connection->execute('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 4 APPPATH\Models\SurveyorModel.php(63): CodeIgniter\Database\BaseConnection->query('SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+            FROM surveyor
+            LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+            WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) 
+            GROUP BY surveyor.lokasi_id
+            ORDER BY lokasi.nama')
+ 5 APPPATH\Controllers\ChartController.php(22): App\Models\SurveyorModel->getLokasiCount(true)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ChartController->donutChart()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ChartController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+12 SYSTEMPATH\Commands\Server\rewrite.php(49): require_once('C:\\xampp\\htdocs\\tb-smt5\\public\\index.php')

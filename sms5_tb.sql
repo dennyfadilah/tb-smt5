@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 07 Jul 2024 pada 07.00
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Jul 11, 2024 at 03:44 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,47 +24,87 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komoditas`
+-- Table structure for table `komoditas`
 --
 
 CREATE TABLE `komoditas` (
   `id` int(11) NOT NULL,
-  `nama` varchar(25) NOT NULL,
+  `nama` varchar(50) NOT NULL,
   `harga` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `komoditas`
+--
+
+INSERT INTO `komoditas` (`id`, `nama`, `harga`) VALUES
+(1, 'Kambing', 2500000),
+(2, 'Sapi', 10000000),
+(3, 'Ikan', 350000),
+(4, 'Ayam', 500000),
+(5, 'Domba', 5000000);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `lokasi`
+-- Table structure for table `lokasi`
 --
 
 CREATE TABLE `lokasi` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `kode_zip` int(11) NOT NULL
+  `nama` varchar(50) NOT NULL,
+  `kode_zip` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `lokasi`
+--
+
+INSERT INTO `lokasi` (`id`, `nama`, `kode_zip`) VALUES
+(1, 'Jakarta', 10210),
+(2, 'Bogor', 16110),
+(3, 'Depok', 16411),
+(4, 'Tangerang', 15111),
+(5, 'Bekasi', 17111);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `surveyor`
+-- Table structure for table `surveyor`
 --
 
 CREATE TABLE `surveyor` (
   `id` int(11) NOT NULL,
-  `marketing_nama` varchar(25) NOT NULL COMMENT 'Ambil dari User yang submit',
-  `survey` date NOT NULL DEFAULT current_timestamp() COMMENT 'Tanggal proses submit data',
+  `marketing_nama` varchar(50) NOT NULL COMMENT 'Ambil dari User yang submit',
+  `waktu` date NOT NULL DEFAULT current_timestamp() COMMENT 'Tanggal proses submit data',
   `komoditas_id` int(11) NOT NULL COMMENT 'Ambil dari data master',
   `lokasi_id` int(11) NOT NULL COMMENT 'Ambil dari data master',
   `repeat_order` tinyint(1) NOT NULL,
   `hasil_survey` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `surveyor`
+--
+
+INSERT INTO `surveyor` (`id`, `marketing_nama`, `waktu`, `komoditas_id`, `lokasi_id`, `repeat_order`, `hasil_survey`) VALUES
+(1, 'Syawal Adidana', '2024-07-06', 1, 1, 0, NULL),
+(2, 'Rio Orangono', '2024-07-06', 1, 2, 0, NULL),
+(3, 'Isti Lahnyatuh', '2024-07-06', 1, 3, 0, NULL),
+(4, 'Ijrabe Rabe', '2024-07-06', 1, 1, 0, NULL),
+(5, 'Sime Disin', '2024-07-06', 2, 2, 0, NULL),
+(6, 'Isti Lahnyatuh', '2024-07-06', 2, 3, 0, NULL),
+(7, 'Test User', '2024-07-06', 2, 1, 0, NULL),
+(8, 'Lampa Uidia', '2024-07-06', 3, 2, 0, NULL),
+(9, 'Kharis', '2024-07-06', 3, 3, 0, NULL),
+(10, 'Denny', '2024-07-07', 1, 1, 0, NULL),
+(11, 'Intan', '2024-07-07', 2, 1, 0, NULL),
+(12, 'Alvin', '2024-07-07', 3, 2, 0, NULL);
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -76,67 +116,60 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`id`, `email`, `password`, `nama`, `no_telp`) VALUES
-(5, 'admin1@mail.com', '$2y$10$oseRo959pLsBIqo7kndFwOO9Rc9yvsi9Swdg.AHFIcPiZfjXwHpyq', 'denny', '085155062088');
-
---
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `komoditas`
+-- Indexes for table `komoditas`
 --
 ALTER TABLE `komoditas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `lokasi`
+-- Indexes for table `lokasi`
 --
 ALTER TABLE `lokasi`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `surveyor`
+-- Indexes for table `surveyor`
 --
 ALTER TABLE `surveyor`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `komoditas`
+-- AUTO_INCREMENT for table `komoditas`
 --
 ALTER TABLE `komoditas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `lokasi`
---
-ALTER TABLE `lokasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `surveyor`
---
-ALTER TABLE `surveyor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT untuk tabel `user`
---
-ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `lokasi`
+--
+ALTER TABLE `lokasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `surveyor`
+--
+ALTER TABLE `surveyor`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
