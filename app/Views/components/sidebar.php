@@ -19,21 +19,21 @@
 
                 <li class="pc-item">
                     <a href="<?= base_url('/') ?>" class="pc-link">
-                        <span class="pc-micon"><i class="ti ti-color-swatch"></i></span>
+                        <span class="pc-micon"><i class="ti ti-home"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
                     <a href="<?= base_url('/transaksi') ?>" class="pc-link">
-                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-micon"><i class="ti ti-send"></i></span>
                         <span class="pc-mtext">Transaksi</span>
                     </a>
                 </li>
 
                 <li class="pc-item">
                     <a href="<?= base_url('/data-master') ?>" class="pc-link">
-                        <span class="pc-micon"><i class="ti ti-typography"></i></span>
+                        <span class="pc-micon"><i class="ti ti-files"></i></span>
                         <span class="pc-mtext">Data Master</span>
                     </a>
                 </li>

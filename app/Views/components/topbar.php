@@ -52,8 +52,8 @@
                                 style="max-height: calc(100vh - 280px)">
 
                                 <div class="upgradeplan-block bg-light-warning rounded">
-                                    <h4>Good Morning, <span class="small text-muted">
-                                            <?= session()->get('name') ?></span></h4>
+                                    <h4>Welcome back, <span class="small text-muted">
+                                            <?= session()->get('nama') ?></span></h4>
                                     <p class="text-muted">Have a nice day</p>
                                 </div>
 
@@ -65,11 +65,10 @@
                                     <span>Profile</span>
                                 </a>
 
-                                <a href="<?= base_url('logout') ?>" class="dropdown-item"
-                                    onclick="return confirm('Yakin logout?')">
+                                <button type="button" class="dropdown-item" id="btnLogout">
                                     <i class="ti ti-logout"></i>
                                     <span>Logout</span>
-                                </a>
+                                </button>
 
                             </div>
                         </div>
@@ -80,3 +79,25 @@
     </div>
 </header>
 <!-- [ Header ] end -->
+
+<?= $this->section('script') ?>
+<script>
+$("#btnLogout").click(function(e) {
+    e.preventDefault();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        reverseButtons: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, Logout!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "<?= base_url('auth/logout') ?>";
+        }
+    });
+});
+</script>
+<?= $this->endSection() ?>

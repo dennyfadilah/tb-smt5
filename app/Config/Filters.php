@@ -108,10 +108,10 @@ class Filters extends BaseFilters
     public array $filters = [
         'auth' => [
             'before' => [
-                '/',               // Home page
-                'transaksi/*',     // Semua URL di bawah transaksi
-                'data-master/*',   // Semua URL di bawah data-master
-                'auth/logout',     // Logout page
+                '/',
+                'transaksi/*',
+                'data-master/*',
+                'auth/logout',
             ]
         ]
     ];
