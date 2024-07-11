@@ -33,4 +33,8 @@ class ChartController extends BaseController
 
         return view("pages/chart/column", $data);
     }
+
+    public function randomin(){
+        
+    }
 }
