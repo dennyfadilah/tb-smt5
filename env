@@ -30,6 +30,7 @@ CI_ENVIRONMENT = development
 # DATABASE
 #--------------------------------------------------------------------
 
+
 database.default.hostname = localhost
 database.default.database = sms5_tb
 database.default.username = root

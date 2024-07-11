@@ -6,9 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 
-$routes->post('send-verification-code', 'VerificationController::sendVerificationCode');
-
-
 $routes->get('/', 'HomeController::index', ['filter' => 'auth']);
 
 $routes->group('transaksi', ['filter' => 'auth'], function ($routes) {
@@ -33,3 +30,7 @@ $routes->group('auth', function ($routes) {
     $routes->get('reset-password', 'AuthController::resetPassword');
     $routes->post('confirm-password', 'AuthController::confirmPassword');
 });
+
+//Bagan / Chart
+$routes->get("/donut", "ChartController::donutChart");
+$routes->get("/column", "ChartController::columnChart");

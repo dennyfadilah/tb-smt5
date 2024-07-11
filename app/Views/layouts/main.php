@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" id="main-style-link">
     <link rel="stylesheet" href="<?= base_url('assets/css/style-preset.css') ?>">
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <style>
     .previewImage {
         width: auto;
