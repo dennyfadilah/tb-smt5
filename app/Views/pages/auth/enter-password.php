@@ -4,7 +4,7 @@
 <div class="card my-5">
     <div class="card-body">
         <a href="#" class="d-flex justify-content-center">
-            <img src="../assets/images/logo-dark.svg" alt="image" class="img-fluid brand-logo">
+            <h2 class="brand-logo">Surveyor</h2>
         </a>
         <div class="row">
             <div class="d-flex justify-content-center">

@@ -8,25 +8,11 @@ use App\Models\UserModel;
 
 class AuthController extends BaseController
 {
-    protected $userModel;
-
-    public function __construct()
-    {
-        $this->userModel = new UserModel();
-    }
-
     public function login()
     {
-        if (session()->get('isLoggedIn')) {
-            return redirect()->to('/');
-        }
-
-        $data = [
-            'title' => 'Login'
-        ];
-
-        // session()->set('isLoggedIn', true);
-        return view('pages/auth/login', $data);
+        if (session()->get('isLoggedIn')) return redirect()->to('/');
+        // session()->set('isLoggedIn', true); // dion agar langsung login
+        return view('pages/auth/login', ['title' => 'Login']);
     }
 
     public function loginCheck()
@@ -88,14 +74,8 @@ class AuthController extends BaseController
 
     public function register()
     {
-        if (session()->get('isLoggedIn')) {
-            return redirect()->to('/');
-        }
-
-        $data = [
-            'title' => 'Register'
-        ];
-        return view('pages/auth/register', $data);
+        if (session()->get('isLoggedIn')) return redirect()->to('/');
+        return view('pages/auth/register', ['title' => 'Register']);
     }
 
     public function registerCheck()
@@ -110,9 +90,10 @@ class AuthController extends BaseController
                 ],
 
                 'no_telp' => [
-                    'rules' => 'required',
+                    'rules' => 'required|is_unique[user.no_telp]',
                     'errors' => [
-                        'required' => 'No. Telp harus diisi'
+                        'required' => 'No. Telp harus diisi',
+                        'is_unique' => 'No. Telp sudah terdaftar'
                     ]
                 ],
 
@@ -186,7 +167,7 @@ class AuthController extends BaseController
     public function enterCode()
     {
         $data = [
-            'title' => 'Enter Code',
+            'pagetitle' => 'Enter Code',
             'email' => session()->get('email')
         ];
 
