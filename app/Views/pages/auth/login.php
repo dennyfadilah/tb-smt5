@@ -4,7 +4,7 @@
 <div class="card my-5">
     <div class="card-body">
         <a href="#" class="d-flex justify-content-center">
-            <img src="../assets/images/logo-dark.svg" alt="image" class="img-fluid brand-logo">
+            <h2 class="brand-logo">Surveyor</h2>
         </a>
         <div class="row">
             <div class="d-flex justify-content-center">
@@ -21,13 +21,15 @@
             <?= csrf_field() ?>
 
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="loginInput" name="loginInput" placeholder="Nomor telepon, email" required>
+                <input type="text" class="form-control" id="loginInput" name="loginInput"
+                    placeholder="Nomor telepon, email" required>
                 <label for="loginInput">Email atau nomor telepon</label>
             </div>
 
             <div class="input-group mb-3">
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password"
+                        required>
                     <label for="password">Password</label>
                 </div>
                 <span class="input-group-text" id="toggleBtn"><i class="ti ti-eye-off" id="iconToggle"></i></span>
@@ -55,106 +57,106 @@
 
 <?= $this->section('script') ?>
 <script>
-    jQuery(function($) {
-        function validEmail(email) {
-            var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return pattern.test(email);
+jQuery(function($) {
+    function validEmail(email) {
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+    }
+
+    $('#loginInput').change(function() {
+        const input = $(this).val();
+        if (input.length == 0) {
+            $(this).addClass('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Masukan email atau nomor telepon.",
+            })
+        } else {
+            $(this).removeClass('is-invalid');
         }
+    });
 
-        $('#loginInput').change(function() {
-            const input = $(this).val();
-            if (input.length == 0) {
-                $(this).addClass('is-invalid');
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Masukan email atau nomor telepon.",
-                })
-            } else {
-                $(this).removeClass('is-invalid');
+    $('#password').keyup(function() {
+        const password = $(this).val();
+        if (password.length == 0) {
+            $(this).addClass('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Masukan password.",
+            })
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+
+    $('#toggleBtn').click(function() {
+        const password = $('#password');
+        const icon = $('#iconToggle');
+        if (password.attr('type') == 'password') {
+            password.attr('type', 'text');
+            icon.removeClass('ti-eye-off');
+            icon.addClass('ti-eye');
+        } else {
+            password.attr('type', 'password');
+            icon.removeClass('ti-eye');
+            icon.addClass('ti-eye-off');
+        }
+    });
+
+    $('#btnLogin').click(function() {
+        const input = $('#loginInput').val();
+        const password = $('#password').val();
+
+        if (input == '' || password == '') {
+            if (input == '') {
+                $('#loginInput').addClass('is-invalid');
+            } else if (password == '') {
+                $('#password').addClass('is-invalid');
             }
-        });
-
-        $('#password').keyup(function() {
-            const password = $(this).val();
-            if (password.length == 0) {
-                $(this).addClass('is-invalid');
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Masukan password.",
-                })
-            } else {
-                $(this).removeClass('is-invalid');
-            }
-        });
-
-        $('#toggleBtn').click(function() {
-            const password = $('#password');
-            const icon = $('#iconToggle');
-            if (password.attr('type') == 'password') {
-                password.attr('type', 'text');
-                icon.removeClass('ti-eye-off');
-                icon.addClass('ti-eye');
-            } else {
-                password.attr('type', 'password');
-                icon.removeClass('ti-eye');
-                icon.addClass('ti-eye-off');
-            }
-        });
-
-        $('#btnLogin').click(function() {
-            const input = $('#loginInput').val();
-            const password = $('#password').val();
-
-            if (input == '' || password == '') {
-                if (input == '') {
-                    $('#loginInput').addClass('is-invalid');
-                } else if (password == '') {
-                    $('#password').addClass('is-invalid');
-                }
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Data tidak boleh kosong.",
-                });
-            }
-        });
-
-        $('#loginForm').submit(function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const $btnLogin = $('#btnLogin');
-
-            $btnLogin.text('On Progress...');
-            $btnLogin.prop('disabled', true);
-
-            $.ajax({
-                method: 'POST',
-                url: $(this).attr('action'),
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                success: function(response) {
-                    $btnLogin.text('Login');
-                    $btnLogin.prop('disabled', false);
-
-                    if (response.error) {
-
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: response.message,
-                        });
-                    } else {
-                        window.location.href = response.redirect;
-                    }
-                }
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Data tidak boleh kosong.",
             });
+        }
+    });
+
+    $('#loginForm').submit(function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const $btnLogin = $('#btnLogin');
+
+        $btnLogin.text('On Progress...');
+        $btnLogin.prop('disabled', true);
+
+        $.ajax({
+            method: 'POST',
+            url: $(this).attr('action'),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(response) {
+                $btnLogin.text('Login');
+                $btnLogin.prop('disabled', false);
+
+                if (response.error) {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.message,
+                    });
+                } else {
+                    window.location.href = response.redirect;
+                }
+            }
         });
     });
+});
 </script>
 <?= $this->endSection() ?>

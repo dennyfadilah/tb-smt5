@@ -4,7 +4,7 @@
 <div class="card my-5">
     <div class="card-body">
         <a href="#" class="d-flex justify-content-center">
-            <img src="../assets/images/logo-dark.svg" alt="image" class="img-fluid brand-logo">
+            <h2 class="brand-logo">Surveyor</h2>
         </a>
         <div class="row">
             <div class="d-flex justify-content-center">
@@ -42,86 +42,86 @@
 
 <?= $this->section('script') ?>
 <script>
-    jQuery(function($) {
-        function validEmail(email) {
-            var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return pattern.test(email);
+jQuery(function($) {
+    function validEmail(email) {
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(email);
+    }
+
+    $('#email').change(function() {
+        const email = $(this).val();
+
+        if (!validEmail(email)) {
+            $(this).addClass('is-invalid');
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Email tidak valid.",
+            })
+        } else {
+            $(this).removeClass('is-invalid');
         }
-
-        $('#email').change(function() {
-            const email = $(this).val();
-
-            if (!validEmail(email)) {
-                $(this).addClass('is-invalid');
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Email tidak valid.",
-                })
-            } else {
-                $(this).removeClass('is-invalid');
-            }
-        });
+    });
 
 
 
-        $('#btnNext').click(function() {
-            const email = $('#email').val();
-            const password = $('#password').val();
+    $('#btnNext').click(function() {
+        const email = $('#email').val();
+        const password = $('#password').val();
 
-            if (email == '') {
-                $('#email').addClass('is-invalid');
+        if (email == '') {
+            $('#email').addClass('is-invalid');
 
-                Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Masukan email.",
-                });
-            }
-        });
-
-        $('#forgotForm').submit(function(e) {
-            e.preventDefault();
-
-            const formData = new FormData(this);
-            const $btnLogin = $('#btnNext');
-
-            $btnLogin.text('On Progress...');
-            $btnLogin.prop('disabled', true);
-
-            $.ajax({
-                method: 'POST',
-                url: $(this).attr('action'),
-                data: formData,
-                cache: false,
-                contentType: false,
-                processData: false,
-                dataType: 'json',
-                success: function(response) {
-                    $btnLogin.text('Next');
-                    $btnLogin.prop('disabled', false);
-
-                    if (response.error) {
-
-                        Swal.fire({
-                            icon: "error",
-                            title: "Oops...",
-                            text: response.message,
-                        });
-                    } else {
-                        Swal.fire({
-                            icon: "success",
-                            title: "Success",
-                            text: response.message,
-                        }).then((result) => {
-                            if (result.isConfirmed || result.dismiss) {
-                                window.location.href = response.redirect;
-                            }
-                        });
-                    }
-                }
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Masukan email.",
             });
+        }
+    });
+
+    $('#forgotForm').submit(function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const $btnLogin = $('#btnNext');
+
+        $btnLogin.text('On Progress...');
+        $btnLogin.prop('disabled', true);
+
+        $.ajax({
+            method: 'POST',
+            url: $(this).attr('action'),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(response) {
+                $btnLogin.text('Next');
+                $btnLogin.prop('disabled', false);
+
+                if (response.error) {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.message,
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: response.message,
+                    }).then((result) => {
+                        if (result.isConfirmed || result.dismiss) {
+                            window.location.href = response.redirect;
+                        }
+                    });
+                }
+            }
         });
     });
+});
 </script>
 <?= $this->endSection() ?>

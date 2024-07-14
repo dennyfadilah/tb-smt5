@@ -12,7 +12,7 @@ class SurveyorModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ["marketing_nama", "komoditas_id", "lokasi_id", "repeat_order", "hasil_survey"];
+    protected $allowedFields    = ["marketing_nama", "waktu", "komoditas_id", "lokasi_id", "repeat_order", "hasil_survey"];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

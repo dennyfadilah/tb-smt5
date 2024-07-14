@@ -9,9 +9,6 @@ use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
-// MODELS
-use App\Models\SurveyorModel;
-
 /**
  * Class BaseController
  *
@@ -60,12 +57,18 @@ abstract class BaseController extends Controller
     }
 
     //CONSTRUCTOR
-    
-    protected $surveyorModel;
     protected $webTitle;
+    protected $surveyorModel;
+    protected $userModel;
+    protected $komoditasModel;
+    protected $lokasiModel;
+    protected $data = [];
 
     public function __construct()
     {
-        $this->surveyorModel = new SurveyorModel();        
+        $this->surveyorModel = new \App\Models\SurveyorModel();
+        $this->userModel = new \App\Models\UserModel();
+        $this->komoditasModel = new \App\Models\KomoditasModel;
+        $this->lokasiModel = new \App\Models\LokasiModel;
     }
 }
