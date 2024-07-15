@@ -59,13 +59,6 @@
     });
 
     function getColumnChart(){
-        //Barang yang sering disurvey setiap lokasi
-        //Selama 6 Bulan terakhir -> ini maksudnya di SUM kah?
-        //
-
-        //var Komoditas
-        //var Lokasi
-        //var Bulan
         var options = {
 
           series:[
@@ -87,14 +80,6 @@
             },
             <?php endforeach?>
           ],
-
-          //var currentMonth = get today's month
-          //get survey_datetime from database
-          //var surveyMonth = survey_datetime->get(month)
-
-          //if(surveyMonth <= currentMonth && surveyMonth >= (currentMonth - 5){
-          //    Tampil data
-          //}
 
           chart: {
           type: 'bar',
