@@ -15,7 +15,8 @@
 
         <!-- table input data -->
         <div class="card-body">
-            <form action="<?= base_url('data-master/location/update/' . $lokasi['id']) ?>" method="post">
+            <form action="<?= base_url('data-master/location/update/' . $lokasi['id']) ?>" method="post"
+                id="locationUpdate">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group mb-3">
@@ -34,7 +35,7 @@
                 </div><br>
 
                 <div class="form-group text-center mb-3">
-                    <button type="submit" class="btn btn-primary w-25">Submit</button>
+                    <button type="submit" class="btn btn-primary w-25" id="btnSubmit">Submit</button>
                 </div>
 
             </form>
@@ -42,4 +43,76 @@
     </div>
 </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+<script>
+$(function($) {
+    $('#btnSubmit').click(function() {
+        const nama = $('#nama');
+        const kode_zip = $('#kode_zip');
+
+        if (nama.val() == '') {
+            nama.addClass('is-invalid');
+        } else {
+            nama.removeClass('is-invalid');
+        }
+
+        if (kode_zip.val() == '') {
+            kode_zip.addClass('is-invalid');
+        } else {
+            kode_zip.removeClass('is-invalid');
+        }
+
+        if (nama.val() == '' || kode_zip.val() == '') {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Mohon lengkapi semua kolom",
+            });
+        }
+    });
+
+    $('#locationUpdate').submit(function(e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const $btnLogin = $('#btnSubmit');
+
+        $btnLogin.text('On Progress...');
+        $btnLogin.prop('disabled', true);
+
+        $.ajax({
+            method: 'POST',
+            url: $(this).attr('action'),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(response) {
+                $btnLogin.text('Submit');
+                $btnLogin.prop('disabled', false);
+
+                if (response.error) {
+
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: response.message,
+                    });
+                } else {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success",
+                        text: response.message,
+                    }).then(function() {
+                        window.location.href = response.redirect;
+                    });
+                }
+            }
+        });
+    });
+});
+</script>
 <?= $this->endSection() ?>

@@ -167,7 +167,7 @@ class AuthController extends BaseController
     public function enterCode()
     {
         $data = [
-            'pagetitle' => 'Enter Code',
+            'title' => 'Enter Code',
             'email' => session()->get('email')
         ];
 

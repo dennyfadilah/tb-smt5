@@ -63,3 +63,5 @@ $routes->group('auth', function ($routes) {
 //Bagan / Chart
 $routes->get("/donut", "ChartController::donutChart");
 $routes->get("/column", "ChartController::columnChart");
+
+$routes->get("testcontroller", "TestController::index");

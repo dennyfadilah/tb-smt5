@@ -41,13 +41,9 @@
                                             class="btn btn-sm btn-warning">Edit</a>
                                     </div>
                                     <div class="col-auto">
-                                        <form method="post"
-                                            action="<?= base_url('data-master/commodity/delete/' . $key['id']) ?>"
-                                            class="d-inline">
-                                            <?= csrf_field() ?>
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                onclick="return confirm('Are you sure?')">Delete</button>
-                                        </form>
+                                        <button class="btn btn-sm btn-danger btn-delete" type="button"
+                                            data-url="<?= base_url('data-master/commodity/delete/' . $key['id']) ?>">
+                                            Delete</button>
                                     </div>
                                 </div>
                             </td>
@@ -61,4 +57,61 @@
     </div>
 </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+<script>
+$(function() {
+    $('.btn-delete').on('click', function(e) {
+        e.preventDefault();
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            reverseButtons: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, Delete!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(this).text('On Progress...');
+                $(this).prop('disabled', true);
+
+                $.ajax({
+                    method: 'POST',
+                    url: $(this).data('url'),
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response) {
+                        $(this).text('Delete');
+                        $(this).prop('disabled', false);
+
+                        if (response.error) {
+
+                            Swal.fire({
+                                icon: "error",
+                                title: "Oops...",
+                                text: response.message,
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "success",
+                                title: "Success",
+                                text: response.message,
+                            }).then(function() {
+                                window.location.href = response.redirect;
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+});
+</script>
 <?= $this->endSection() ?>
