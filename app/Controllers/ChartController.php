@@ -18,7 +18,7 @@ class ChartController extends BaseController
 
     public function donutChart()
     {
-        $data["pagetitle"] = $this->webTitle;
+        $data["title"] = $this->webTitle;
         $data["list_lokasi"] = $this->surveyorModel->getLokasiCount(true);
 
         return view("pages/chart/donut", $data);
@@ -26,15 +26,11 @@ class ChartController extends BaseController
 
     public function columnChart()
     {
-        $data["pagetitle"] = $this->webTitle;
+        $data["title"] = $this->webTitle;
         $data["list_specific"] = $this->surveyorModel->getSpecificCount();
         $data["list_lokasi"] = $this->surveyorModel->getLokasiCount();
         $data["list_komoditas"] = $this->surveyorModel->getKomoditasCount();
 
         return view("pages/chart/column", $data);
-    }
-
-    public function randomin()
-    {
     }
 }

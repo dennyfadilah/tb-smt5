@@ -4,10 +4,8 @@
 
 <div class="row">
 
-
-
     <!-- [ sample-page ] start -->
-    <div class="col-xl-4 col-md-6">
+    <!-- <div class="col-xl-4 col-md-6">
         <div class="card bg-secondary-dark dashnum-card text-white overflow-hidden">
             <span class="round small"></span>
             <span class="round big"></span>
@@ -36,8 +34,8 @@
                 <p class="mb-0 opacity-50">Total Pending Orders</p>
             </div>
         </div>
-    </div>
-    <div class="col-xl-4 col-md-6">
+    </div> -->
+    <!-- <div class="col-xl-4 col-md-6">
         <div class="card bg-primary-dark dashnum-card text-white overflow-hidden">
             <span class="round small"></span>
             <span class="round big"></span>
@@ -93,8 +91,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-xl-4 col-md-12">
+    </div> -->
+    <!-- <div class="col-xl-4 col-md-12">
         <div class="card bg-primary-dark dashnum-card dashnum-card-small text-white overflow-hidden">
             <span class="round bg-primary small"></span>
             <span class="round bg-primary big"></span>
@@ -125,117 +123,18 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="col-xl-8 col-md-12">
+    </div> -->
+    <div class="col-xl-6 col-md-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-3 align-items-center">
-                    <div class="col">
-                        <small>Total Growth</small>
-                        <h3>$2,324.00</h3>
-                    </div>
-                    <div class="col-auto">
-                        <select class="form-select p-r-35">
-                            <option>Today</option>
-                            <option selected>This Month</option>
-                            <option>This Year</option>
-                        </select>
-                    </div>
-                </div>
-                <div id="growthchart"></div>
+                <div id="donutchart"></div>
             </div>
         </div>
     </div>
-    <div class="col-xl-4 col-md-12">
+    <div class="col-xl-6 col-md-12">
         <div class="card">
             <div class="card-body">
-                <div class="row mb-3 align-items-center">
-                    <div class="col">
-                        <h4>Popular Stocks</h4>
-                    </div>
-                    <div class="col-auto"> </div>
-                </div>
-                <div class="rounded bg-light-secondary overflow-hidden mb-3">
-                    <div class="px-3 pt-3">
-                        <div class="row mb-1 align-items-start">
-                            <div class="col">
-                                <h5 class="text-secondary mb-0">Bajaj Finery</h5>
-                                <small class="text-muted">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$1839.00</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="bajajchart"></div>
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-start">
-                            <div class="col">
-                                <h5 class="mb-0">Bajaj Finery</h5>
-                                <small class="text-success">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$1839.00<span
-                                        class="ms-2 align-top avtar avtar-xxs bg-light-success"><i
-                                            class="ti ti-chevron-up text-success"></i></span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-start">
-                            <div class="col">
-                                <h5 class="mb-0">TTML</h5>
-                                <small class="text-danger">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$100.00<span class="ms-2 align-top avtar avtar-xxs bg-light-danger"><i
-                                            class="ti ti-chevron-down text-danger"></i></span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-start">
-                            <div class="col">
-                                <h5 class="mb-0">Reliance</h5>
-                                <small class="text-success">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$200.00<span class="ms-2 align-top avtar avtar-xxs bg-light-success"><i
-                                            class="ti ti-chevron-up text-success"></i></span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-start">
-                            <div class="col">
-                                <h5 class="mb-0">TTML</h5>
-                                <small class="text-danger">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$189.00<span class="ms-2 align-top avtar avtar-xxs bg-light-danger"><i
-                                            class="ti ti-chevron-down text-danger"></i></span></h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item px-0">
-                        <div class="row align-items-start">
-                            <div class="col">
-                                <h5 class="mb-0">Stolon</h5>
-                                <small class="text-danger">10% Profit</small>
-                            </div>
-                            <div class="col-auto">
-                                <h4 class="mb-0">$189.00<span class="ms-2 align-top avtar avtar-xxs bg-light-danger"><i
-                                            class="ti ti-chevron-down text-danger"></i></span></h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <div class="text-center">
-                    <a href="#!" class="b-b-primary text-primary">View all <i class="ti ti-chevron-right"></i></a>
-                </div>
+                <div id="columnchart"></div>
             </div>
         </div>
     </div>
@@ -247,5 +146,137 @@
 
 <?= $this->section('script') ?>
 
+<script>
+    var chartHeight = 500;
+    var donutChart = null;
+    var columnChart = null;
+
+    $(document).ready(function(){
+        getDonutChart();
+        getColumnChart();
+    });
+
+    function getDonutChart(){
+        //Lokasi yang sering disurvey
+        // if(chart){
+        //     chart.destroy();
+        // }
+        var options = {
+        // series: [
+        //     5, 4, 3,
+        // ], //Bayak Survey
+        // labels: [
+        //     "Jakarta", "Bogor", "Depok",
+        // ], //Lokasi
+
+        plotOptions: {
+            pie: {
+                customScale: 1,
+                // donut: {
+                //     size: "0%"
+                // }
+            }
+        },
+        series: [
+            <?php foreach  ($list_lokasi as $lokasi):?>
+                <?= intval($lokasi["kunjungan"])?>, //KOK GAK PERLU JSON_ENCODE ??!!
+            <?php endforeach ?>
+        ],
+        labels: [
+            <?php foreach  ($list_lokasi as $lokasi):?>
+                <?= json_encode($lokasi["lokasi"])?>,
+            <?php endforeach ?>
+        ],
+        chart: {
+            type: 'donut',
+            height: chartHeight
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+            }]
+        };
+
+        donutChart = new ApexCharts(document.querySelector("#donutchart"), options);
+        donutChart.render();        
+    }
+
+    function getColumnChart(){        
+        var options = {
+          series:[
+            <?php foreach ($list_komoditas as $komoditas): ?>
+            { // IGNORE ERROR INI
+              name: <?= json_encode($komoditas["komoditas"])?>,
+              // komoditas
+              data: [
+                <?php foreach ($list_lokasi as $lokasi):?>
+                  //Lokasi
+                    <?php foreach ($list_specific as $specific):?>
+                      //jumlah
+                      <?php if($lokasi["lokasi"] == $specific["lokasi"] && $komoditas["komoditas"] == $specific["komoditas"]):?>
+                        <?= intval($specific["jumlah"])?>,
+                      <?php endif ?>
+                    <?php endforeach?>
+                <?php endforeach?>
+              ]
+            },
+            <?php endforeach?>
+          ],
+
+          chart: {
+          type: 'bar',
+          height: chartHeight - 250
+        },
+        plotOptions: {
+          bar: {
+            horizontal: false,
+            columnWidth: '50%',
+            endingShape: 'rounded'
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          show: true,
+          width: 2,
+          colors: ['transparent']
+        },
+        xaxis: {
+          categories: [
+            <?php foreach ($list_lokasi as $lokasi): ?>
+              <?= json_encode($lokasi["lokasi"])?>,
+            <?php endforeach ?>
+          ],          
+        },
+        yaxis: {
+          title: {
+            text: 'Banyak Survey'
+          }
+        },
+        fill: {
+          opacity: 1
+        },
+        tooltip: {
+          y: {
+            formatter: function (val) {
+              return val + " kunjungan."
+            }
+          }
+        }
+        };
+
+        columnChart = new ApexCharts(document.querySelector("#columnchart"), options);
+        columnChart.render();
+    }
+
+</script>
 
 <?= $this->endSection() ?>
