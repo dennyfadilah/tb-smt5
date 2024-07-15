@@ -62,7 +62,6 @@ abstract class BaseController extends Controller
     protected $userModel;
     protected $komoditasModel;
     protected $lokasiModel;
-    protected $data = [];
 
     public function __construct()
     {

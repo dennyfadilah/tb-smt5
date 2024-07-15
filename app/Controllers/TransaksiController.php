@@ -26,26 +26,65 @@ class TransaksiController extends BaseController
         ];
 
         if ($this->request->getMethod() === 'POST') {
-            $data = [
-                'marketing_nama' => $this->request->getVar('marketing_nama'),
-                'waktu' => $this->request->getVar('waktu'),
-                'komoditas_id' => $this->request->getVar('komoditas_id'),
-                'lokasi_id' => $this->request->getVar('lokasi_id'),
-                'repeat_order' => $this->request->getVar('repeat_order'),
-                'hasil_survey' => $this->request->getVar('hasil_survey'),
+            $rules = [
+                'marketing_nama' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Marketing name must be filled'
+                    ]
+                ],
+                'waktu' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Waktu must be filled'
+                    ]
+                ],
+                'komoditas_id' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Commodity must be filled'
+                    ]
+                ],
+                'lokasi_id' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Location must be filled'
+                    ]
+                ],
+                'repeat_order' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Repeat order must be filled'
+                    ]
+                ],
             ];
 
-            if ($this->surveyorModel->insert($data)) {
-                return $this->response->setJSON([
-                    'error' => false,
-                    'message' => 'Transaction data was successfully added',
-                    'redirect' => base_url('transaksi')
-                ]);
+            if ($this->validate($rules)) {
+                $input = [
+                    'marketing_nama' => $this->request->getPost('marketing_nama'),
+                    'waktu' => $this->request->getPost('waktu'),
+                    'komoditas_id' => $this->request->getPost('komoditas_id'),
+                    'lokasi_id' => $this->request->getPost('lokasi_id'),
+                    'repeat_order' => $this->request->getPost('repeat_order'),
+                    'hasil_survey' => $this->request->getPost('hasil_survey')
+                ];
+
+                if ($this->surveyorModel->insert($input)) {
+                    return $this->response->setJSON([
+                        'error' => false,
+                        'message' => 'Transaction data was successfully added',
+                        'redirect' => base_url('transaksi')
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'error' => true,
+                        'message' => 'Transaction data failed to be added'
+                    ]);
+                }
             } else {
-                return $this->response->setJSON([
-                    'error' => true,
-                    'message' => 'Marketing data failed to be added'
-                ]);
+                return $this->response->setJSON(
+                    ['error' => true, 'message' => $this->validator->getErrors()]
+                );
             }
         }
 
@@ -55,13 +94,73 @@ class TransaksiController extends BaseController
     public function update($id)
     {
         $data = [
-            'title' => 'Transaction - Create Transaction',
+            'title' => 'Transaction - Update Transaction',
             'komoditas' => $this->komoditasModel->findAll(),
             'lokasi' => $this->lokasiModel->findAll(),
             'surveyor' => $this->surveyorModel->find($id)
         ];
 
-        if ($this->request->getMethod() === 'post') {
+        if ($this->request->getMethod() === 'POST') {
+            $rules = [
+                'marketing_nama' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Marketing name must be filled'
+                    ]
+                ],
+                'waktu' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Waktu must be filled'
+                    ]
+                ],
+                'komoditas_id' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Commodity must be filled'
+                    ]
+                ],
+                'lokasi_id' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Location must be filled'
+                    ]
+                ],
+                'repeat_order' => [
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => 'Repeat order must be filled'
+                    ]
+                ],
+            ];
+
+            if ($this->validate($rules)) {
+                $input = [
+                    'marketing_nama' => $this->request->getPost('marketing_nama'),
+                    'waktu' => $this->request->getPost('waktu'),
+                    'komoditas_id' => $this->request->getPost('komoditas_id'),
+                    'lokasi_id' => $this->request->getPost('lokasi_id'),
+                    'repeat_order' => $this->request->getPost('repeat_order'),
+                    'hasil_survey' => $this->request->getPost('hasil_survey')
+                ];
+
+                if ($this->surveyorModel->update($id, $input)) {
+                    return $this->response->setJSON([
+                        'error' => false,
+                        'message' => 'Transaction data was successfully updated',
+                        'redirect' => base_url('transaksi')
+                    ]);
+                } else {
+                    return $this->response->setJSON([
+                        'error' => true,
+                        'message' => 'Transaction data failed to be updated',
+                    ]);
+                }
+            } else {
+                return $this->response->setJSON(
+                    ['error' => true, 'message' => $this->validator->getErrors()]
+                );
+            }
         }
 
         return view('pages/transaksi/update', $data);

@@ -75,7 +75,8 @@
             <!-- [ Breadcrumb ] end -->
 
             <!-- [ Content ] start -->
-            <?= $this->renderSection('content') ?>
+            <div class="pb-2">
+                <?= $this->renderSection('content') ?></div>
             <!-- [ Content ] end -->
         </div>
     </div>

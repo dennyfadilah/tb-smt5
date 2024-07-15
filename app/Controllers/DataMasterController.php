@@ -252,7 +252,7 @@ class DataMasterController extends BaseController
                 ];
 
                 if ($this->komoditasModel->insert($data)) {
-                    return $this->response->setJSON(
+                    return $this->response->setJSON( 
                         [
                             'error' => false,
                             'message' => 'Commodity data successfully added',

@@ -6,13 +6,16 @@
     <div class="card">
         <div class="card-header py-2">
             <div class="row justify-content-between">
+
                 <div class="col-sm-6 d-flex align-items-center">
                     <h2 class="my-0">Marketing Page</h2>
                 </div>
+
                 <div class="col-md-6 text-end">
                     <a href="<?= base_url('data-master/marketing/create') ?>" class="btn btn-primary">Create
                         Marketing</a>
                 </div>
+
             </div>
         </div>
 
