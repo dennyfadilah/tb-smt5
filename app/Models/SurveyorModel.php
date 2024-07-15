@@ -118,4 +118,12 @@ class SurveyorModel extends Model
         $query = $this->db->query("SELECT DISTINCT marketing_nama AS nama FROM surveyor")->getResultArray();
         return $query;
     }
+
+    function getAllData()
+    {
+        return $this->select('surveyor.*, komoditas.nama as nama_komoditas, lokasi.nama as nama_lokasi')
+            ->join('komoditas', 'komoditas.id = surveyor.komoditas_id')
+            ->join('lokasi', 'lokasi.id = surveyor.lokasi_id')
+            ->findAll();
+    }
 }

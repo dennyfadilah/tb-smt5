@@ -10,6 +10,9 @@ $routes->get('/', 'HomeController::index', ['filter' => 'auth']);
 
 $routes->group('transaksi', ['filter' => 'auth'], function ($routes) {
     $routes->get('/', 'TransaksiController::index');
+    $routes->match(['get', 'post'], 'create', 'TransaksiController::create');
+    $routes->match(['get', 'post'], 'update/(:num)', 'TransaksiController::update/$1');
+    $routes->post('delete/(:num)', 'TransaksiController::delete/$1');
 });
 
 $routes->group('data-master', ['filter' => 'auth'], function ($routes) {
@@ -63,5 +66,3 @@ $routes->group('auth', function ($routes) {
 //Bagan / Chart
 $routes->get("/donut", "ChartController::donutChart");
 $routes->get("/column", "ChartController::columnChart");
-
-$routes->get("testcontroller", "TestController::index");
