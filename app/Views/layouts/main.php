@@ -25,7 +25,7 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <style>
+    <!-- <style>
     .previewImage {
         width: auto;
         height: auto;
@@ -34,7 +34,7 @@
         display: block;
         margin: 0 auto;
     }
-    </style>
+    </style> -->
 </head>
 
 <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr"

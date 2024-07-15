@@ -27,12 +27,11 @@
                 <li class="pc-item <?= service('uri')->getSegment(1) == 'transaksi' ? 'active' : '' ?>">
                     <a href="<?= base_url('/transaksi') ?>" class="pc-link">
                         <span class="pc-micon"><i class="ti ti-send"></i></span>
-                        <span class="pc-mtext">Transaksi</span>
+                        <span class="pc-mtext">Transaction</span>
                     </a>
                 </li>
 
-                <li
-                    class="pc-item pc-hasmenu <?= service('uri')->getSegment(1) == 'data-master' ? 'active pc-trigger' : '' ?>">
+                <li class="pc-item pc-hasmenu <?= service('uri')->getSegment(1) == 'data-master' ? 'active pc-trigger' : '' ?>">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"><i class="ti ti-files"></i></span>
                         <span class="pc-mtext">Data Master</span>
