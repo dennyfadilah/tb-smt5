@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>Surveyor | <?= $title ?></title>
+    <title>Surveyor | <?= $title ?? 'Dashboard' ?></title>
 
     <!-- [Favicon] icon -->
     <link rel="icon" href="<?= base_url('assets/images/favicon.svg') ?>" type="image/x-icon">
@@ -25,16 +25,6 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- <style>
-    .previewImage {
-        width: auto;
-        height: auto;
-        max-height: 200px;
-        max-width: 150px;
-        display: block;
-        margin: 0 auto;
-    }
-    </style> -->
 </head>
 
 <body data-pc-preset="preset-1" data-pc-sidebar-theme="light" data-pc-sidebar-caption="true" data-pc-direction="ltr"
@@ -92,7 +82,6 @@
     <script src="<?= base_url('assets/js/fonts/custom-font.js') ?>"></script>
     <script src="<?= base_url('assets/js/plugins/feather.min.js') ?>"></script>
     <script src="<?= base_url('assets/js/plugins/apexcharts.min.js') ?>"></script>
-    <script src="<?= base_url('assets/js/pages/dashboard-default.js') ?>"></script>
     <script src="<?= base_url('assets/js/scripts.js') ?>"></script>
 
     <!-- Jquery -->

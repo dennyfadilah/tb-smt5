@@ -7,92 +7,55 @@ $segment2 = $totalSegments > 1 ? $uri->getSegment(2) : '';
 $segment3 = $totalSegments > 2 ? $uri->getSegment(3) : '';
 ?>
 
+<style>
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--bs-white);
+}
+
+.breadcrumb-item a {
+    color: var(--bs-white);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--bs-white);
+    text-decoration: underline;
+}
+
+.breadcrumb-item.active {
+    color: var(--bs-warning);
+    font-weight: bold;
+}
+</style>
+
 <div class="card bg-primary-dark dashnum-card dashnum-card-small overflow-hidden text-white">
     <span class="round bg-primary small"></span>
     <span class="round bg-primary big"></span>
-    <div class="card-body p-3 align-items-center">
-        <div class="ms-2 d-flex">
-            <h5 class="text-white mb-0">
-                <?php
-                echo $title;
-                // if ($segment3) {
-                //     echo ucfirst($segment3) . ' ' . ucfirst($segment2);
-                // } else if ($segment2) {
-                //     echo ucfirst($segment2);
-                // } else {
-                //     echo ucfirst($segment1);
-                // }
-                ?>
-            </h5>
+    <div class="card-body p-3 ">
+        <div class="ms-2 d-flex align-items-center">
+            <h4 class="text-white my-0"><?= $title ?></h4>
 
-            <div class="vr ms-2 border opacity-50"></div>
+            <div class="vr mx-2 border opacity-50"></div>
 
-            <!-- <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?= base_url('/') ?>">Dashboard</a></li>
+            <div class="d-flex align-items-center">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb my-0">
+                        <li class="breadcrumb-item"><a href="<?= base_url() ?>">Dashboard</a></li>
+                        <?php if ($segment3) : ?>
 
-                <?php if ($segment1 == 'data-master') : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?= base_url('/' . $segment1 . '/' . $segment2) ?>"><?= ucfirst($segment2) ?></a>
+                        </li>
 
-                <li class="breadcrumb-item active">Data Master</li>
-                <?php if ($segment2) : ?>
-                <li class="breadcrumb-item">
-                    <a href="<?= base_url('/' . $segment1 . '/' . $segment2) ?>">
-                        <?= ucfirst($segment2) ?></a>
-                </li>
-                <?php if ($segment3) : ?>
-                <li class="breadcrumb-item active"><?= ucfirst($segment3) ?></li>
-                <?php endif; ?>
-                <?php endif; ?>
-
-                <?php else : ?>
-                <li class="breadcrumb-item active"><?= ucfirst($segment1) ?></li>
-                <?php endif; ?>
-
-            </ul> -->
+                        <?php elseif ($segment2 == 'create' || $segment2 == 'update') : ?>
+                        <li class="breadcrumb-item">
+                            <a href="<?= base_url($segment1) ?>"><?= ucfirst($segment1) ?></a>
+                        </li>
+                        <?php endif; ?>
+                        <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
+                    </ol>
+                </nav>
+            </div>
         </div>
 
     </div>
 </div>
-
-<!-- <div class="page-header mb-3">
-    <div class="page-block">
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <div class="page-header-title">
-                    <h5 class="m-b-10">
-                        <?php
-                        if ($segment3) {
-                            echo ucfirst($segment3) . ' ' . ucfirst($segment2);
-                        } else if ($segment2) {
-                            echo ucfirst($segment2);
-                        } else {
-                            echo ucfirst($segment1);
-                        }
-                        ?>
-                    </h5>
-                </div>
-
-                <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="<?= base_url('/') ?>">Dashboard</a></li>
-
-                    <?php if ($segment1 == 'data-master') : ?>
-
-                    <li class="breadcrumb-item active">Data Master</li>
-                    <?php if ($segment2) : ?>
-                    <li class="breadcrumb-item">
-                        <a href="<?= base_url('/' . $segment1 . '/' . $segment2) ?>">
-                            <?= ucfirst($segment2) ?></a>
-                    </li>
-                    <?php if ($segment3) : ?>
-                    <li class="breadcrumb-item active"><?= ucfirst($segment3) ?></li>
-                    <?php endif; ?>
-                    <?php endif; ?>
-
-                    <?php else : ?>
-                    <li class="breadcrumb-item active"><?= ucfirst($segment1) ?></li>
-                    <?php endif; ?>
-
-                </ul>
-            </div>
-        </div>
-    </div>
-</div> -->

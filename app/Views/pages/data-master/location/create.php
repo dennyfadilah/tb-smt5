@@ -3,7 +3,10 @@
 <?= $this->section('content') ?>
 
 <div class="col-sm-12">
-    <div class="card">
+    <div class="card dashnum-card dashnum-card-small overflow-hidden">
+        <span class="round bg-warning small"></span>
+        <span class="round bg-warning big"></span>
+
         <div class="card-header py-2">
             <div class="row justify-content-between">
                 <div class="col-sm-6 d-flex align-items-center">

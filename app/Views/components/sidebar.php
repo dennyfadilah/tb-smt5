@@ -3,9 +3,9 @@
     <div class="navbar-wrapper">
 
         <div class="m-header">
-            <a href="<?= base_url('/') ?>" class="b-brand text-primary">
+            <a href="<?= base_url('/') ?>" class="b-brand text-primary d-flex align-items-center mx-auto">
                 <!-- ========   Change your logo from here   ============ -->
-                <h2>Surveyor</h2>
+                <h2 class="my-0">Surveyor</h2>
             </a>
         </div>
 
@@ -31,7 +31,8 @@
                     </a>
                 </li>
 
-                <li class="pc-item pc-hasmenu <?= service('uri')->getSegment(1) == 'data-master' ? 'active pc-trigger' : '' ?>">
+                <li
+                    class="pc-item pc-hasmenu <?= service('uri')->getSegment(1) == 'data-master' ? 'active pc-trigger' : '' ?>">
                     <a href="#" class="pc-link">
                         <span class="pc-micon"><i class="ti ti-files"></i></span>
                         <span class="pc-mtext">Data Master</span>

@@ -48,12 +48,12 @@ class SurveyorModel extends Model
 
     // Niatnya: ubah dari nilai boolean kolom repeat order jadi string "Iya" dan "Tidak"
     // belum di test.
-    function getRepeatOrder($thisID)
-    {
-        $repeatOrder = $this->where(["id" => $thisID])->findColumn("repeat_order");
-        $repeatOrder = ($repeatOrder) ? "Iya" : "Tidak";
-        return $repeatOrder;
-    }
+    // function getRepeatOrder($thisID)
+    // {
+    //     $repeatOrder = $this->where(["id" => $thisID])->findColumn("repeat_order");
+    //     $repeatOrder = ($repeatOrder) ? "Iya" : "Tidak";
+    //     return $repeatOrder;
+    // }
 
     // Banyak "kunjungan" (Lokasi yang sering di survey)
     // return: lokasi, kunjungan
@@ -67,39 +67,39 @@ class SurveyorModel extends Model
             GROUP BY surveyor.lokasi_id
             ORDER BY lokasi.nama")->getResultArray();
         }
-        $query = $this->db->query("SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
-        FROM surveyor
-        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
-        GROUP BY surveyor.lokasi_id
-        ORDER BY lokasi.nama")->getResultArray();
-        return $query;
+        // $query = $this->db->query("SELECT lokasi.nama AS lokasi, COUNT(surveyor.lokasi_id) AS kunjungan
+        // FROM surveyor
+        // LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+        // GROUP BY surveyor.lokasi_id
+        // ORDER BY lokasi.nama")->getResultArray();
+        // return $query;
     }
 
     //Semua Komoditas yang pernah di Survey
     //Return: nama, jumlah
-    function getKomoditasCount()
-    {
-        $query = $this->db->query("SELECT komoditas.nama as komoditas, COUNT(surveyor.komoditas_id) AS jumlah
-        FROM surveyor
-        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
-        GROUP BY komoditas.nama
-        ORDER BY komoditas.nama")->getResultArray();
-        return $query;
-    }
+    // function getKomoditasCount()
+    // {
+    //     $query = $this->db->query("SELECT komoditas.nama as komoditas, COUNT(surveyor.komoditas_id) AS jumlah
+    //     FROM surveyor
+    //     LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+    //     GROUP BY komoditas.nama
+    //     ORDER BY komoditas.nama")->getResultArray();
+    //     return $query;
+    // }
 
     //Banyak yang di cari (Komoditas yang sering di Survey di setiap lokasi)
     //return: komoditas, lokasi, jumlah
-    function getSpecificCount()
-    {
-        $query = $this->db->query("SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
-        FROM surveyor
-        LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
-        LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
-        WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
-        GROUP BY komoditas.nama, lokasi.nama
-        ORDER BY komoditas.nama")->getResultArray();
-        return $query;
-    }
+    // function getSpecificCount()
+    // {
+    //     $query = $this->db->query("SELECT komoditas.nama AS komoditas, lokasi.nama AS lokasi, COUNT(surveyor.komoditas_id) AS jumlah
+    // FROM surveyor
+    // LEFT JOIN komoditas ON surveyor.komoditas_id = komoditas.id
+    // LEFT JOIN lokasi ON surveyor.lokasi_id = lokasi.id
+    // WHERE surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 5 MONTH)) AND DATE(CURRENT_DATE)
+    // GROUP BY komoditas.nama, lokasi.nama
+    // ORDER BY komoditas.nama")->getResultArray();
+    //     return $query;
+    // }
 
     //Banyak komoditas di setiap lokasi (tidak membedakan jenis komoditas)
     // function getLokasiCount(){
@@ -113,17 +113,44 @@ class SurveyorModel extends Model
 
     // test 
     // return: nama
-    function getTestSelect()
-    {
-        $query = $this->db->query("SELECT DISTINCT marketing_nama AS nama FROM surveyor")->getResultArray();
-        return $query;
-    }
+    // function getTestSelect()
+    // {
+    //     $query = $this->db->query("SELECT DISTINCT marketing_nama AS nama FROM surveyor")->getResultArray();
+    //     return $query;
+    // }
 
     function getAllData()
     {
         return $this->select('surveyor.*, komoditas.nama as nama_komoditas, lokasi.nama as nama_lokasi')
             ->join('komoditas', 'komoditas.id = surveyor.komoditas_id')
             ->join('lokasi', 'lokasi.id = surveyor.lokasi_id')
+            ->findAll();
+    }
+
+    function getLocation($thisMonth = null)
+    {
+        if ($thisMonth) {
+            return $this->select('lokasi.nama as lokasi, COUNT(surveyor.lokasi_id) AS kunjungan')
+                ->join('lokasi', 'lokasi.id = surveyor.lokasi_id')
+                ->where('surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 30 DAY)) AND DATE(CURRENT_DATE) ')
+                ->groupBy('lokasi.id')
+                ->orderBy('kunjungan', 'ASC')
+                ->findAll();
+        } else {
+            return $this->db->query('SELECT DISTINCT lokasi.nama FROM lokasi')->getResultArray();
+        }
+    }
+
+    function getSurvey()
+    {
+        return $this->select('komoditas.nama as komoditas, lokasi.nama as lokasi, COUNT(surveyor.komoditas_id) AS kunjungan')
+            ->join('komoditas', 'komoditas.id = surveyor.komoditas_id')
+            ->join('lokasi', 'lokasi.id = surveyor.lokasi_id')
+            ->where('surveyor.waktu BETWEEN DATE(DATE_SUB(CURRENT_DATE, INTERVAL 6 MONTH)) AND DATE(CURRENT_DATE)')
+            ->groupBy('komoditas.nama')
+            ->groupBy('lokasi.nama')
+            ->orderBy('kunjungan', 'ASC')
+            ->orderBy('lokasi.nama', 'ASC')
             ->findAll();
     }
 }

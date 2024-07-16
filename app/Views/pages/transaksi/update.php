@@ -20,13 +20,13 @@
                     <div class="form-group mb-3">
                         <label for="marketing_nama" class="form-label">Name</label>
                         <input type="text" class="form-control" id="marketing_nama" name="marketing_nama"
-                            value="<?= session()->get('nama') ?>" readonly>
+                            value="<?= $surveyor['marketing_nama'] ?>" readonly>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="waktu" class="form-label">Date Time Survey</label>
-                        <input type="date" class="form-control" id="waktu" name="waktu" value="<?= date('Y-m-d') ?>"
-                            readonly>
+                        <input type="date" class="form-control" id="waktu" name="waktu"
+                            value="<?= $surveyor['waktu'] ?>">
                     </div>
 
                     <div class="form-group mb-3">

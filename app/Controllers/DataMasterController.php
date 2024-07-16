@@ -13,7 +13,7 @@ class DataMasterController extends BaseController
     public function index_marketing()
     {
         $data = [
-            'title' => 'Data Master - Marketing',
+            'title' => 'Marketing',
             'user' => $this->userModel->findAll(),
         ];
 
@@ -95,14 +95,14 @@ class DataMasterController extends BaseController
             }
         }
 
-        return view('pages/data-master/marketing/create', ['title' => 'Data Master - Marketing - Create Marketing']);
+        return view('pages/data-master/marketing/create', ['title' => 'Create Marketing']);
     }
 
     /* ---------------- UPDATE MARKETING ---------------- */
     public function update_marketing($id)
     {
         $data = [
-            'title' => 'Data Master - Marketing - Update Marketing',
+            'title' => 'Update Marketing',
             'user' => $this->userModel->find($id),
         ];
 
@@ -218,7 +218,7 @@ class DataMasterController extends BaseController
     public function index_commodity()
     {
         $data = [
-            'title' => 'Data Master - Commodity',
+            'title' => 'Commodity',
             'comodity' => $this->komoditasModel->findAll(),
         ];
 
@@ -270,14 +270,14 @@ class DataMasterController extends BaseController
                 );
             }
         }
-        return view('pages/data-master/commodity/create', ['title' => 'Data Master - Commodity - Create Commodity']);
+        return view('pages/data-master/commodity/create', ['title' => 'Create Commodity']);
     }
 
     /* ---------------- UPDATE COMMODITY ---------------- */
     public function update_commodity($id)
     {
         $data = [
-            'title' => 'Data Master - Commodity - Update Commodity',
+            'title' => 'Update Commodity',
             'comodity' => $this->komoditasModel->find($id),
         ];
 
@@ -352,7 +352,7 @@ class DataMasterController extends BaseController
     public function index_lokasi()
     {
         $data = [
-            'title' => 'Data Master - Location',
+            'title' => 'Location',
             'lokasi' => $this->lokasiModel->findAll(),
         ];
         return view('pages/data-master/location/index', $data);
@@ -404,14 +404,14 @@ class DataMasterController extends BaseController
             }
         }
 
-        return view('pages/data-master/location/create', ['title' => 'Data Master - Location - Add Location']);
+        return view('pages/data-master/location/create', ['title' => 'Create Location']);
     }
 
     /* ---------------- UPDATE LOCATION ---------------- */
     public function update_lokasi($id)
     {
         $data = [
-            'title' => 'Data Master - Location - Update Location',
+            'title' => 'Update Location',
             'lokasi' => $this->lokasiModel->find($id),
         ];
 

@@ -20,7 +20,7 @@ class TransaksiController extends BaseController
     public function create()
     {
         $data = [
-            'title' => 'Transaction - Create Transaction',
+            'title' => 'Create Transaction',
             'komoditas' => $this->komoditasModel->findAll(),
             'lokasi' => $this->lokasiModel->findAll()
         ];
@@ -94,7 +94,7 @@ class TransaksiController extends BaseController
     public function update($id)
     {
         $data = [
-            'title' => 'Transaction - Update Transaction',
+            'title' => 'Update Transaction',
             'komoditas' => $this->komoditasModel->findAll(),
             'lokasi' => $this->lokasiModel->findAll(),
             'surveyor' => $this->surveyorModel->find($id)

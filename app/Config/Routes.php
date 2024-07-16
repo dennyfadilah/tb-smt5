@@ -62,7 +62,3 @@ $routes->group('auth', function ($routes) {
     $routes->get('reset-password', 'AuthController::resetPassword');
     $routes->post('confirm-password', 'AuthController::confirmPassword');
 });
-
-//Bagan / Chart
-$routes->get("/donut", "ChartController::donutChart");
-$routes->get("/column", "ChartController::columnChart");

@@ -4,7 +4,16 @@
 
 <div class="row">
     <div class="col-xl-6 col-md-12">
-        <div class="card">
+        <div class="card dashnum-card dashnum-card-small overflow-hidden">
+            <span class="round bg-warning small"></span>
+            <span class="round bg-warning big"></span>
+            <div class="card-header py-2">
+                <h2 class="my-0">Survey Location</h2>
+                <p class="my-0 text-muted">
+                    <small>Lokasi yang sering di survey selama bulan
+                        ini.</small>
+                </p>
+            </div>
             <div class="card-body">
                 <div id="donutchart"></div>
             </div>
@@ -12,15 +21,22 @@
     </div>
 
     <div class="col-xl-6 col-md-12">
-        <div class="card">
+        <div class="card dashnum-card dashnum-card-small overflow-hidden">
+            <span class="round bg-warning small"></span>
+            <span class="round bg-warning big"></span>
+            <div class="card-header py-2">
+                <h2 class="my-0">Survey Commodity</h2>
+                <p class="my-0 text-muted">
+                    <small>Barang yang sering di survey setiap lokasi
+                        selama 6 bulan terakhir.</small>
+                </p>
+            </div>
             <div class="card-body">
                 <div id="columnchart"></div>
             </div>
         </div>
     </div>
 </div>
-
-
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
@@ -31,9 +47,12 @@ $(function() {
 
     //Lokasi yang sering disurvey
     function getDonutChart() {
+        var series = JSON.parse('<?= $seriesDonut ?>');
+        var labels = JSON.parse('<?= $labels ?>');
+
         var options = {
-            series: [44, 55, 41, 17, 15],
-            labels: ["Jan", "Feb", "Mar", "Apr", "May"],
+            series: series,
+            labels: labels,
             chart: {
                 type: 'donut',
             },
@@ -41,7 +60,7 @@ $(function() {
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 200
+                        width: 200,
                     },
                     legend: {
                         position: 'bottom'
@@ -56,17 +75,12 @@ $(function() {
 
     // Barang yang sering di survey setiap lokasi selama 6 bulan terakhir
     function getColumnChart() {
+        var series = JSON.parse('<?= $seriesColumn ?>');
+        var categories = JSON.parse('<?= $categories ?>');
+
         var options = {
-            series: [{
-                name: 'Net Profit',
-                data: [44, 55, 57, 56, 61, 58, 63, 60, 66]
-            }, {
-                name: 'Revenue',
-                data: [76, 85, 101, 98, 87, 105, 91, 114, 94]
-            }, {
-                name: 'Free Cash Flow',
-                data: [35, 41, 36, 26, 45, 48, 52, 53, 41]
-            }],
+            series: series,
+
             chart: {
                 type: 'bar',
                 height: 350
@@ -87,23 +101,17 @@ $(function() {
                 colors: ['transparent']
             },
             xaxis: {
-                categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                categories: categories,
             },
             yaxis: {
                 title: {
-                    text: '$ (thousands)'
+                    text: 'Survey'
                 }
             },
             fill: {
                 opacity: 1
             },
-            tooltip: {
-                y: {
-                    formatter: function(val) {
-                        return "$ " + val + " thousands"
-                    }
-                }
-            }
+
         };
 
         var chart = new ApexCharts(document.querySelector("#columnchart"), options);

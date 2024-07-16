@@ -60,12 +60,6 @@
 
                                 <hr>
 
-                                <a href="javascript:void(0)"
-                                    class="dropdown-item <?= base_url('profile') === current_url() ? 'active' : '' ?>">
-                                    <i class="ti ti-user"></i>
-                                    <span>Profile</span>
-                                </a>
-
                                 <button type="button" class="dropdown-item" id="btnLogout">
                                     <i class="ti ti-logout"></i>
                                     <span>Logout</span>
