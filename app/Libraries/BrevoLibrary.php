@@ -2,8 +2,8 @@
 
 namespace App\Libraries;
 
-use SendinBlue\Client\Configuration;
-use SendinBlue\Client\Api\TransactionalEmailsApi;
+use Brevo\Client\Configuration;
+use Brevo\Client\Api\TransactionalEmailsApi;
 use GuzzleHttp\Client;
 use Config\Brevo;
 use Exception;
@@ -20,7 +20,7 @@ class BrevoLibrary
 
     public function sendVerificationEmail($to, $subject, $content)
     {
-        $sendSmtpEmail = new \SendinBlue\Client\Model\SendSmtpEmail([
+        $sendSmtpEmail = new \Brevo\Client\Model\SendSmtpEmail([
             'to' => [['email' => $to]],
             'sender' => ['email' => 'tes.mail@mail.com'],
             'subject' => $subject,
