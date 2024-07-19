@@ -5,6 +5,7 @@ $totalSegments = $uri->getTotalSegments();
 $segment1 = $uri->getSegment(1);
 $segment2 = $totalSegments > 1 ? $uri->getSegment(2) : '';
 $segment3 = $totalSegments > 2 ? $uri->getSegment(3) : '';
+
 ?>
 
 <style>
@@ -40,16 +41,19 @@ $segment3 = $totalSegments > 2 ? $uri->getSegment(3) : '';
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb my-0">
                         <li class="breadcrumb-item"><a href="<?= base_url() ?>">Dashboard</a></li>
+                        <?php if ($segment1 == 'data-master') : ?>
                         <?php if ($segment3) : ?>
-
                         <li class="breadcrumb-item">
                             <a href="<?= base_url('/' . $segment1 . '/' . $segment2) ?>"><?= ucfirst($segment2) ?></a>
                         </li>
+                        <?php endif; ?>
 
-                        <?php elseif ($segment2 == 'create' || $segment2 == 'update') : ?>
+                        <?php else : ?>
+                        <?php if ($segment2 == 'create' || $segment2 == 'update' || $segment2 == 'detail') :  ?>
                         <li class="breadcrumb-item">
-                            <a href="<?= base_url($segment1) ?>"><?= ucfirst($segment1) ?></a>
+                            <a href="<?= base_url('/' . $segment1) ?>">Transaction</a>
                         </li>
+                        <?php endif; ?>
                         <?php endif; ?>
                         <li class="breadcrumb-item active" aria-current="page"><?= $title ?></li>
                     </ol>

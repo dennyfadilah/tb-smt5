@@ -19,16 +19,8 @@
                         <a href="<?= base_url('transaksi/create') ?>" class="btn btn-primary">Create
                             Transaction</a>
 
-                        <div class="dropdown">
-                            <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                Export
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Excel</a></li>
-                                <li><a class="dropdown-item" href="#">Pdf</a></li>
-                            </ul>
-                        </div>
+                        <a href="<?= base_url('export/excel') ?>" class="btn btn-success">Export
+                            Excel</a>
 
                     </div>
                 </div>
@@ -68,13 +60,25 @@
                             <td>
                                 <div class="row g-1 justify-content-center">
                                     <div class="col-auto">
+                                        <a href="<?= base_url('export/pdf/' . $value['id']) ?>"
+                                            class="btn btn-sm btn-success" data-bs-toggle="tooltip"
+                                            data-bs-title="Download"><i class="ti ti-download"></i></a>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="<?= base_url('transaksi/detail/' . $value['id']) ?>"
+                                            class="btn btn-sm btn-primary" data-bs-toggle="tooltip"
+                                            data-bs-title="Detail"><i class="ti ti-info-circle"></i></a>
+                                    </div>
+                                    <div class="col-auto">
                                         <a href="<?= base_url('transaksi/update/' . $value['id']) ?>"
-                                            class="btn btn-sm btn-warning">Edit</a>
+                                            class="btn btn-sm btn-warning" data-bs-toggle="tooltip"
+                                            data-bs-title="update"><i class="ti ti-edit"></i></a>
                                     </div>
                                     <div class="col-auto">
                                         <button class="btn btn-sm btn-danger btn-delete" type="button"
-                                            data-url="<?= base_url('transaksi/delete/' . $value['id']) ?>">
-                                            Delete</button>
+                                            data-url="<?= base_url('transaksi/delete/' . $value['id']) ?>"
+                                            data-bs-toggle="tooltip" data-bs-title="Delete">
+                                            <i class="ti ti-trash"></i></button>
                                     </div>
                                 </div>
                             </td>

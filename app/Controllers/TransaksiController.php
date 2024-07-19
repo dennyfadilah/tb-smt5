@@ -182,4 +182,20 @@ class TransaksiController extends BaseController
             );
         }
     }
+
+    public function detail($id)
+    {
+        $surveyor = $this->surveyorModel->find($id);
+        $komoditas = $this->komoditasModel->find($surveyor['komoditas_id']);
+        $lokasi = $this->lokasiModel->find($surveyor['lokasi_id']);
+
+        $data = [
+            'title' => 'Detail Transaction',
+            'komoditas' => $komoditas,
+            'lokasi' => $lokasi,
+            'surveyor' => $surveyor
+        ];
+
+        return view('pages/transaksi/detail', $data);
+    }
 }

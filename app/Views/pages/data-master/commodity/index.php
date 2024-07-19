@@ -30,24 +30,22 @@
                     <tbody>
                         <?php $no = 1;
                         foreach ($comodity as $key) : ?>
-                        <tr class="text-center">
-                            <td scope="row"><?= $no ?></td>
-                            <td><?= $key['nama'] ?></td>
-                            <td><?= $key['harga'] ?></td>
-                            <td>
-                                <div class="row g-1 justify-content-center">
-                                    <div class="col-auto">
-                                        <a href="<?= base_url('data-master/commodity/update/' . $key['id']) ?>"
-                                            class="btn btn-sm btn-warning">Edit</a>
+                            <tr class="text-center">
+                                <td scope="row"><?= $no ?></td>
+                                <td><?= $key['nama'] ?></td>
+                                <td><?= $key['harga'] ?></td>
+                                <td>
+                                    <div class="row g-1 justify-content-center">
+                                        <div class="col-auto">
+                                            <a href="<?= base_url('data-master/commodity/update/' . $key['id']) ?>" class="btn btn-sm btn-warning" data-bs-toggle="tooltip" data-bs-title="update"><i class="ti ti-edit"></i></a>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button class="btn btn-sm btn-danger btn-delete" type="button" data-url="<?= base_url('data-master/commodity/delete/' . $key['id']) ?>" data-bs-toggle="tooltip" data-bs-title="Delete">
+                                                <i class="ti ti-trash"></i></button>
+                                        </div>
                                     </div>
-                                    <div class="col-auto">
-                                        <button class="btn btn-sm btn-danger btn-delete" type="button"
-                                            data-url="<?= base_url('data-master/commodity/delete/' . $key['id']) ?>">
-                                            Delete</button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                         <?php $no++;
                         endforeach; ?>
                     </tbody>
@@ -61,57 +59,57 @@
 
 <?= $this->section('script') ?>
 <script>
-$(function() {
-    $('.btn-delete').on('click', function(e) {
-        e.preventDefault();
+    $(function() {
+        $('.btn-delete').on('click', function(e) {
+            e.preventDefault();
 
 
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            reverseButtons: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, Delete!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                $(this).text('On Progress...');
-                $(this).prop('disabled', true);
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                reverseButtons: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, Delete!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).text('On Progress...');
+                    $(this).prop('disabled', true);
 
-                $.ajax({
-                    method: 'POST',
-                    url: $(this).data('url'),
-                    cache: false,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response) {
-                        $(this).text('Delete');
-                        $(this).prop('disabled', false);
+                    $.ajax({
+                        method: 'POST',
+                        url: $(this).data('url'),
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function(response) {
+                            $(this).text('Delete');
+                            $(this).prop('disabled', false);
 
-                        if (response.error) {
+                            if (response.error) {
 
-                            Swal.fire({
-                                icon: "error",
-                                title: "Oops...",
-                                text: response.message,
-                            });
-                        } else {
-                            Swal.fire({
-                                icon: "success",
-                                title: "Success",
-                                text: response.message,
-                            }).then(function() {
-                                window.location.href = response.redirect;
-                            });
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Oops...",
+                                    text: response.message,
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "success",
+                                    title: "Success",
+                                    text: response.message,
+                                }).then(function() {
+                                    window.location.href = response.redirect;
+                                });
+                            }
                         }
-                    }
-                });
-            }
+                    });
+                }
+            });
         });
     });
-});
 </script>
 <?= $this->endSection() ?>

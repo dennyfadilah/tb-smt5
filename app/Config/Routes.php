@@ -13,6 +13,7 @@ $routes->group('transaksi', ['filter' => 'auth'], function ($routes) {
     $routes->match(['get', 'post'], 'create', 'TransaksiController::create');
     $routes->match(['get', 'post'], 'update/(:num)', 'TransaksiController::update/$1');
     $routes->post('delete/(:num)', 'TransaksiController::delete/$1');
+    $routes->get('detail/(:num)', 'TransaksiController::detail/$1');
 });
 
 $routes->group('data-master', ['filter' => 'auth'], function ($routes) {
@@ -61,4 +62,9 @@ $routes->group('auth', function ($routes) {
     $routes->post('verify-code', 'AuthController::verifyCode');
     $routes->get('reset-password', 'AuthController::resetPassword');
     $routes->post('confirm-password', 'AuthController::confirmPassword');
+});
+
+$routes->group('export', function ($routes) {
+    $routes->get('excel', 'ExportController::excel');
+    $routes->get('pdf/(:num)', 'ExportController::pdf/$1');
 });

@@ -37,11 +37,11 @@
                                 <td>
                                     <div class="row g-1 justify-content-center">
                                         <div class="col-auto">
-                                            <a href="<?= base_url('data-master/location/update/' . $key['id']) ?>" class="btn btn-sm btn-warning ">Edit</a>
+                                            <a href="<?= base_url('data-master/location/update/' . $key['id']) ?>" class="btn btn-sm btn-warning " data-bs-toggle="tooltip" data-bs-title="update"><i class="ti ti-edit"></i></a>
                                         </div>
                                         <div class="col-auto">
-                                            <button class="btn btn-sm btn-danger btn-delete" type="button" data-url="<?= base_url('data-master/location/delete/' . $key['id']) ?>">
-                                                Delete</button>
+                                            <button class="btn btn-sm btn-danger btn-delete" type="button" data-url="<?= base_url('data-master/location/delete/' . $key['id']) ?>" data-bs-toggle="tooltip" data-bs-title="Delete">
+                                                <i class="ti ti-trash"></i></button>
                                         </div>
                                     </div>
                                 </td>
